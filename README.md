@@ -1,24 +1,15 @@
 # Rsbe::Client
 
-TODO: Write a gem description
+Client library for interaction with the rsbe API
 
-## Installation
+## Current Status
 
-Add this line to your application's Gemfile:
-
-    gem 'rsbe-client'
-
-And then execute:
-
-    $ bundle
-
-Or install it yourself as:
-
-    $ gem install rsbe-client
+### *UNDER DEVELOPMENT*
 
 ## Usage
 
-TODO: Write usage instructions here
+TODO: coming soon
+
 
 ## Contributing
 
