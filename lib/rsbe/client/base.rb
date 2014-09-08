@@ -1,6 +1,6 @@
-require_relative './client/base'
-
 module Rsbe
   module Client
+    class Base
+    end
   end
 end
