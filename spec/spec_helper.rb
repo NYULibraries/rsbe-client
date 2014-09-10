@@ -1,4 +1,5 @@
 require_relative '../lib/rsbe/client'
+require 'vcr'
 
 RSpec.configure do |config|
   config.filter_run :focus
