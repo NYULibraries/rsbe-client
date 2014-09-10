@@ -4,9 +4,9 @@ describe Rsbe::Client::Partner do
     it      { should be_a(Rsbe::Client::Partner) }
   end
 
-  describe ".all" do
-  describe ".find"
-  describe "#save" do
+  pending ".all"
+  pending ".find"
+  pending "#save" do
     context "when id is known"
     context "when id is unknown"
   end
