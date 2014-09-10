@@ -1,4 +1,5 @@
 require_relative '../lib/rsbe/client'
+require 'vcr'
 
 RSpec.configure do |config|
   config.filter_run :focus
@@ -22,4 +23,13 @@ RSpec.configure do |config|
     mocks.syntax = :expect
     mocks.verify_partial_doubles = true
   end
+end
+
+VCR.configure do |c|
+  c.default_cassette_options = { allow_playback_repeats: true, record: :new_episodes }
+  c.cassette_library_dir = 'spec/vcr_cassettes'
+  c.configure_rspec_metadata!
+  c.hook_into :webmock
+  c.filter_sensitive_data('user') { ENV['RSBE_USER'] }
+  c.filter_sensitive_data('password') { ENV['RSBE_PASSWORD'] }
 end
