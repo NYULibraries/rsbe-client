@@ -1,4 +1,5 @@
 require_relative '../lib/rsbe/client'
+require 'rspec/its'
 require 'vcr'
 
 RSpec.configure do |config|
