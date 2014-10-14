@@ -37,15 +37,15 @@ module Rsbe
       private
 
       def create
-        response = @conn.post do |req|
+        @response = @conn.post do |req|
           req.url coll_path
           req.headers['Content-Type'] = 'application/json'
           req.body = @hash.to_json
         end
-        return false unless response.status == 201
+        return false unless @response.status == 201
 
         # need to update attributes with those on server
-        response_hash = JSON.parse(response.body)
+        response_hash = JSON.parse(@response.body)
         raise "unable to parse response to hash" unless response_hash.is_a?(Hash)
 
         # if response body has a value then update hash
@@ -57,12 +57,12 @@ module Rsbe
       end
 
       def update
-        # response = @conn.put do |req|
+        # @response = @conn.put do |req|
         #   req.url item_path(@hash[:id])
         #   req.headers['Content-Type'] = 'application/json'
         #   req.body = @hash.to_json
         # end
-        # response.status == 201
+        # @response.status == 201
       end
 
       def has_id?
