@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://foo:bar@localhost:3000/api/v0/partners
+    body:
+      encoding: UTF-8
+      string: '{"id":"51213be7-c8de-4e06-8cc2-06bfc82cdd68","code":"bar","name":null,"rel_path":"d/e/f"}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Location:
+      - http://localhost:3000/api/v0/partners/51213be7-c8de-4e06-8cc2-06bfc82cdd68
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"11ce442eda8f7fc80cfbb4d5f8905217"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 49792ae9-de7a-4c16-a156-96f43e239977
+      X-Runtime:
+      - '0.248438'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"51213be7-c8de-4e06-8cc2-06bfc82cdd68","code":"bar","name":null,"lock_version":0,"created_at":"2014-10-14T21:01:17.560Z","updated_at":"2014-10-14T21:01:17.560Z","rel_path":"d/e/f"}'
+    http_version: 
+  recorded_at: Tue, 14 Oct 2014 21:01:17 GMT
+recorded_with: VCR 2.9.3

@@ -1,4 +1,4 @@
-require 'faraday'
+require 'active_support'
 
 module Rsbe
   module Client
@@ -11,13 +11,18 @@ module Rsbe
 
       RW_ATTRS = [:id, :code, :name, :rel_path]
       RO_ATTRS = [:created_at, :updated_at, :lock_version]
+      ALL_ATTRS = RW_ATTRS + RO_ATTRS
 
-      RW_ATTRS.each {|m| define_method("#{m}=") {|v| @hash[m] = v}}
-      (RW_ATTRS + RO_ATTRS).each {|m| define_method("#{m}") { @hash[m]}}
+      # define setter methods for RW attributes
+      RW_ATTRS.each  {|m| define_method("#{m}=") {|v| @hash[m] = v}}
+
+      # define getter methods for all attributes
+      ALL_ATTRS.each {|m| define_method("#{m}")  { @hash[m]}}
 
       def initialize(vals = {})
         super()
         @hash = {}
+        # initialize local hash with incoming values, restrict to RW attrs
         RW_ATTRS.each {|x| @hash[x] = vals[x]}
       end
 
@@ -32,13 +37,25 @@ module Rsbe
         #   case response.status
         #   when 200
         #     current_attrs = JSON.parse(response.body).to_h
-        @response = @conn.post do |req|
+        response = @conn.post do |req|
           req.url coll_path
           req.headers['Content-Type'] = 'application/json'
           req.body = @hash.to_json
         end
 
-        @response.status == 201
+        # TODO : add error messages
+        return false unless response.status == 201
+
+        # need to update attributes with those on server
+        response_hash = JSON.parse(response.body)
+        raise "unable to parse response to hash" unless response_hash.is_a?(Hash)
+
+        # if response body has a value then update hash
+        # not using #update because keys may not be present in local hash,
+        # and would need to symbolize response_hash keys
+        ALL_ATTRS.each {|k| @hash[k] = response_hash[k.to_s] if response_hash[k.to_s]; puts "#{k}, #{response_hash[k.to_s]}"}
+
+        true
       end
 
       private
