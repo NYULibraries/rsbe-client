@@ -37,13 +37,17 @@ module Rsbe
         #   case response.status
         #   when 200
         #     current_attrs = JSON.parse(response.body).to_h
+        (has_id? && exists?) ? update : create
+      end
+
+      private
+
+      def create
         response = @conn.post do |req|
           req.url coll_path
           req.headers['Content-Type'] = 'application/json'
           req.body = @hash.to_json
         end
-
-        # TODO : add error messages
         return false unless response.status == 201
 
         # need to update attributes with those on server
@@ -58,7 +62,24 @@ module Rsbe
         true
       end
 
-      private
+      def update
+        # response = @conn.put do |req|
+        #   req.url item_path(@hash[:id])
+        #   req.headers['Content-Type'] = 'application/json'
+        #   req.body = @hash.to_json
+        # end
+        # response.status == 201
+      end
+
+      def has_id?
+        !@hash[:id].nil?
+      end
+
+      def exists?
+#        @conn.get item_path(@hash[:id]).status == 200
+      end
+
+
       def coll_path
         Rsbe::Client::Base::PATH + '/partners'
       end
