@@ -1,0 +1,3 @@
+[Cassette: 'partner/create'] Initialized with options: {:record=>:once, :match_requests_on=>[:method, :uri], :allow_unused_http_interactions=>true, :serialize_with=>:yaml, :persist_with=>:file_system}
+[webmock] Handling request: [post http://foo:bar@localhost:3000/api/v0/partners] (disabled: false)
+[webmock] Identified request type (unhandled) for [post http://foo:bar@localhost:3000/api/v0/partners]

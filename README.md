@@ -30,7 +30,6 @@ This library allows one to interact with the R* Backend (rsbe) API.
 * As an Authorized Client, I want to find the id of an Fmd given its path.
 
 
-
 #### Required Environment Variables:
 ```
 RSBE_URL
@@ -57,13 +56,20 @@ Rsbe::Partner#collections
 
 ## Usage
 
-TODO: coming soon
+```ruby
+p = Rsbe::Client::Partner.new(attrs)
+p.save                                      # => true or false
+```
 
+```ruby
+p = Rsbe::Client::Partner.find_by_code(code)
+p.name = "Lorem Ipsum"
+p.save
+c = p.collections.new(attrs)
+c.quota = 9999
+c.ready_for_content = true
+unless c.save
+  puts c.errors
+end
+```
 
-## Contributing
-
-1. Fork it ( http://github.com/<my-github-username>/rsbe-client/fork )
-2. Create your feature branch (`git checkout -b my-new-feature`)
-3. Commit your changes (`git commit -am 'Add some feature'`)
-4. Push to the branch (`git push origin my-new-feature`)
-5. Create new Pull Request
