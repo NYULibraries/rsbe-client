@@ -51,7 +51,7 @@ module Rsbe
         # if response body has a value then update hash
         # not using #update because keys may not be present in local hash,
         # and would need to symbolize response_hash keys
-        ALL_ATTRS.each {|k| @hash[k] = response_hash[k.to_s] if response_hash[k.to_s]; puts "#{k}, #{response_hash[k.to_s]}"}
+        ALL_ATTRS.each {|k| @hash[k] = response_hash[k.to_s] if response_hash[k.to_s] }
 
         true
       end
