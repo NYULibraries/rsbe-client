@@ -20,25 +20,19 @@ module Rsbe
       ALL_ATTRS.each {|m| define_method("#{m}")  { @hash[m]}}
 
       def initialize(vals = {})
+        raise ArgumentError.new("Constructor requires a Hash") unless vals.is_a?(Hash)
         super()
         @hash = {}
+        @response = nil
+
         # initialize local hash with incoming values, restrict to RW attrs
         RW_ATTRS.each {|x| @hash[x] = vals[x]}
       end
 
       def save
-        # if id present
-        #   GET to see if already exists
-        #   if already exists, merge in @hash with response body, and PUT
-        #   if DNE, then POST
-        # id = hash[:id]
-        # if id
-        #   response = @conn.get item_path(id)
-        #   case response.status
-        #   when 200
-        #     current_attrs = JSON.parse(response.body).to_h
         (has_id? && exists?) ? update : create
       end
+
 
       private
 
