@@ -1,6 +1,5 @@
 require 'faraday'
 require 'json'
-require 'active_support'
 
 module Rsbe
   module Client
