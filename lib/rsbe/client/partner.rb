@@ -4,6 +4,10 @@ module Rsbe
   module Client
     class Partner < Base
 
+      def self.find(id)
+        get(id)
+        update_hash_from_response
+      end
       # implementation objectives:
       # - expose attributes via standard method calls
       # - use hash for internal representation to simplify passing data back and forth
@@ -36,6 +40,11 @@ module Rsbe
 
       private
 
+      def get(id = @hash[:id])
+        @response = @conn.get item_path(id)
+        @response.status == 200
+      end
+
       def create
         @response = @conn.post do |req|
           req.url coll_path
@@ -44,7 +53,14 @@ module Rsbe
         end
         return false unless @response.status == 201
 
-        # need to update attributes with those on server
+        update_hash_from_response
+        true
+      end
+
+      def update_hash_from_response
+        raise "@response not initialized" if @response.nil?
+
+        # update attributes with those from server
         response_hash = JSON.parse(@response.body)
         raise "unable to parse response to hash" unless response_hash.is_a?(Hash)
 
@@ -52,8 +68,6 @@ module Rsbe
         # not using #update because keys may not be present in local hash,
         # and would need to symbolize response_hash keys
         ALL_ATTRS.each {|k| @hash[k] = response_hash[k.to_s] if response_hash[k.to_s] }
-
-        true
       end
 
       def update
@@ -70,7 +84,7 @@ module Rsbe
       end
 
       def exists?
-#        @conn.get item_path(@hash[:id]).status == 200
+#
       end
 
 
