@@ -6,7 +6,7 @@ module Rsbe
 
       def self.find(id)
         p = self.new(id: id)
-        raise "not found" unless p.send(:get)
+        raise Rsbe::Client::RecordNotFound.new("Partner with #{id} not found") unless p.send(:get)
         p.send(:update_hash_from_response)
         p
       end
@@ -69,9 +69,7 @@ module Rsbe
         response_hash = JSON.parse(@response.body)
         raise "unable to parse response to hash" unless response_hash.is_a?(Hash)
 
-        # If response body has a value then update hash.
-        # Not using #update because keys may not be present in local hash,
-        #   and would need to symbolize response_hash keys
+        # update object state
         ALL_ATTRS.each {|k| @hash[k] = response_hash[k.to_s] if response_hash[k.to_s] }
       end
 

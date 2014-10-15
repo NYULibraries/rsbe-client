@@ -1,4 +1,4 @@
-%w(base partner).each do |r|
+%w(base partner not_found_error).each do |r|
   require_relative "./client/#{r}"
 end
 
