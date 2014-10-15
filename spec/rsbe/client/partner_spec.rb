@@ -60,5 +60,14 @@ describe Rsbe::Client::Partner do
         its(:save) { should eq false }
       end
     end
+
+    describe ".find" do
+      context "with id of existing Partner", vcr: {cassette_name: 'partner/find-existing'} do
+        subject { Rsbe::Client::Partner.find('b110731f-86af-4534-8e58-6d219dcb1c52') }
+        its(:class) { should eq Rsbe::Client::Partner }
+      end
+
+      pending "with invalid id"
+    end
   end
 end

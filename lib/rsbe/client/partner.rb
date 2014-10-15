@@ -5,16 +5,21 @@ module Rsbe
     class Partner < Base
 
       def self.find(id)
-        get(id)
-        update_hash_from_response
+        p = self.new(id: id)
+        raise "not found" unless p.send(:get)
+        p.send(:update_hash_from_response)
+        p
       end
-      # implementation objectives:
-      # - expose attributes via standard method calls
-      # - use hash for internal representation to simplify passing data back and forth
-      #   to back end app
 
-      RW_ATTRS = [:id, :code, :name, :rel_path]
-      RO_ATTRS = [:created_at, :updated_at, :lock_version]
+      # implementation objectives:
+      # - expose attributes via standard setter/getter methods
+      # - create getters for  all Read-Only  (RO) attributes
+      # - create setters only for Read-Write (RW) attributes
+      # - use hash for internal representation to simplify passing
+      #   data back and forth to back end app
+
+      RW_ATTRS  = [:id, :code, :name, :rel_path]
+      RO_ATTRS  = [:created_at, :updated_at, :lock_version]
       ALL_ATTRS = RW_ATTRS + RO_ATTRS
 
       # define setter methods for RW attributes
@@ -64,9 +69,9 @@ module Rsbe
         response_hash = JSON.parse(@response.body)
         raise "unable to parse response to hash" unless response_hash.is_a?(Hash)
 
-        # if response body has a value then update hash
-        # not using #update because keys may not be present in local hash,
-        # and would need to symbolize response_hash keys
+        # If response body has a value then update hash.
+        # Not using #update because keys may not be present in local hash,
+        #   and would need to symbolize response_hash keys
         ALL_ATTRS.each {|k| @hash[k] = response_hash[k.to_s] if response_hash[k.to_s] }
       end
 
@@ -84,9 +89,7 @@ module Rsbe
       end
 
       def exists?
-#
       end
-
 
       def coll_path
         Rsbe::Client::Base::PATH + '/partners'
@@ -96,34 +99,6 @@ module Rsbe
         coll_path + "/#{id}"
       end
 
-      # internal representation should be a Hash
-      # attr_accessor *RW_ATTRS = [:id, :code, :name, :rel_path, :lock_version]
-      # attr_reader   *RO_ATTRS = [:created_at, :updated_at]
-
-      # def initialize(vals ={})
-      #   raise ArgumentError.new("#{vals} to be a Hash") unless vals.class == Hash
-
-      #   # initialize writable instance variables
-      #   RW_ATTRS.each { |k| instance_variable_set("@#{k}", vals[k]) }
-
-      #   @collection_path = [Rsbe::Client::Base::PATH, 'partners'].join('/')
-      # end
-
-      # def self.find(id)
-      #   @conn.get "#{@collection_path}/#{id}"
-      # end
-
-      # def self.all
-      #   response = get(@path)
-      #   JSON.parse(response.body).collect {|p| new(p)}
-      # end
-
-      # private
-      # def self.get(path)
-      #   response = @conn.get path
-      #   raise "Error getting #{path}" unless response.status == 200
-      #   response
-      # end
     end
   end
 end
