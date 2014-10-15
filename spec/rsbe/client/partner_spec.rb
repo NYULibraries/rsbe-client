@@ -15,7 +15,7 @@ describe Rsbe::Client::Partner do
 
 
   describe "#save" do
-    context "a new Partner" do
+    context "when creating a new Partner" do
       context "with valid attributes" do
         context "and no id", vcr: {cassette_name: 'partner/save-unknown-id'} do
           let(:partner) { Rsbe::Client::Partner.new(code: 'foo', rel_path: 'a/b/c') }
@@ -50,6 +50,14 @@ describe Rsbe::Client::Partner do
             its(:updated_at) { should_not be_nil }
           end
         end
+      end
+
+      context "with invalid attributes", vcr: {cassette_name: 'partner/save-invalid'} do
+        let(:partner) { Rsbe::Client::Partner.new(id: 'abc123',
+                                                  code: 'baz a saurus',
+                                                  rel_path: 'b/a/z') }
+        subject { partner }
+        its(:save) { should eq false }
       end
     end
   end
