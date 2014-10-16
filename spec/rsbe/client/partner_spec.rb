@@ -13,6 +13,18 @@ describe Rsbe::Client::Partner do
     end
   end
 
+  describe ".all", vcr: {cassette_name: 'partner/all'} do
+    context "returned array" do
+      subject { Rsbe::Client::Partner.all }
+      it         { should be_a(Array) }
+      its(:size) { should eq 4 }
+    end
+    context "returned array element" do
+      subject { Rsbe::Client::Partner.all[0] }
+      it { should be_a(Rsbe::Client::Partner) }
+    end
+  end
+
   describe ".find" do
     context "with id of existing Partner", vcr: {cassette_name: 'partner/find-existing'} do
       subject { Rsbe::Client::Partner.find('b110731f-86af-4534-8e58-6d219dcb1c52') }
