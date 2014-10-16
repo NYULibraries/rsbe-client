@@ -2,7 +2,7 @@ describe Rsbe::Client::Partner do
 
   describe ".new" do
     context "with valid attributes" do
-      subject { Rsbe::Client::Partner.new(code: 'foo', rel_path: 'a/b/c') }
+      subject { Rsbe::Client::Partner.new(code: 'foo', rel_path: 'f/o/o') }
       it { should be_a(Rsbe::Client::Partner) }
     end
     context "with incorrect argument type" do
@@ -32,10 +32,9 @@ describe Rsbe::Client::Partner do
   describe "#save" do
     context "when creating a new Partner" do
       context "with valid attributes" do
-        context "and no id", vcr: {cassette_name: 'partner/save-unknown-id'} do
-          let(:partner) { Rsbe::Client::Partner.new(code: 'foo', rel_path: 'a/b/c') }
+        context "and no id", vcr: {cassette_name: 'partner/save-create-unknown-id'} do
+          let(:partner) { Rsbe::Client::Partner.new(code: 'foo', rel_path: 'f/o/o') }
           subject { partner }
-
           its(:save) { should eq true }
 
           context "after save" do
@@ -47,14 +46,13 @@ describe Rsbe::Client::Partner do
           end
         end
 
-        context "and a known id", vcr: {cassette_name: 'partner/save-known-id'} do
+        context "and a known id", vcr: {cassette_name: 'partner/save-create-known-id'} do
           let(:partner) do
             Rsbe::Client::Partner.new(id: '51213be7-c8de-4e06-8cc2-06bfc82cdd68',
                                       code: 'bar',
-                                      rel_path: 'd/e/f')
+                                      rel_path: 'b/a/r')
           end
           subject { partner }
-
           its(:save) { should eq true }
 
           context "after save" do
@@ -73,6 +71,31 @@ describe Rsbe::Client::Partner do
                                                   rel_path: 'b/a/z') }
         subject { partner }
         its(:save) { should eq false }
+      end
+    end
+    context "when updating a Partner" do
+      context "with valid attributes", vcr: {cassette_name: 'partner/save-update-valid'} do
+        let(:partner) { Rsbe::Client::Partner.find('b051f936-835c-4abb-9034-efa7508db4bf') }
+        subject { partner }
+        context "before save-as-update" do
+          its(:id)         { should eq 'b051f936-835c-4abb-9034-efa7508db4bf' }
+          its(:code)       { should eq 'onyx'  }
+          its(:name)       { should     be_nil }
+          its(:created_at) { should_not be_nil }
+          its(:updated_at) { should_not be_nil }
+        end
+
+        context "on save-as-update" do
+          before { partner.name = 'The Black Onyx Syndicate' }
+          its(:save) { should eq true }
+          context "after save" do
+            its(:id)         { should eq 'b051f936-835c-4abb-9034-efa7508db4bf' }
+            its(:code)       { should eq 'onyx'  }
+            its(:name)       { should eq 'The Black Onyx Syndicate' }
+            its(:created_at) { should_not be_nil }
+            its(:updated_at) { should_not be_nil }
+          end
+        end
       end
     end
   end

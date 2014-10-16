@@ -14,7 +14,7 @@ module Rsbe
       # implementation objectives:
       # - expose attributes via standard setter/getter methods
       # - create getters for  all Read-Only  (RO) attributes
-      # - create setters only for Read-Write (RW) attributes
+      # - create setters only for Read/Write (RW) attributes
       # - use hash for internal representation to simplify passing
       #   data back and forth to back end app
 
@@ -45,6 +45,8 @@ module Rsbe
 
       private
 
+
+      # N.B. intentionally not updating hash here
       def get(id = @hash[:id])
         @response = @conn.get item_path(id)
         @response.status == 200
@@ -74,12 +76,18 @@ module Rsbe
       end
 
       def update
-        # @response = @conn.put do |req|
-        #   req.url item_path(@hash[:id])
-        #   req.headers['Content-Type'] = 'application/json'
-        #   req.body = @hash.to_json
-        # end
-        # @response.status == 201
+        @response = @conn.put do |req|
+          req.url item_path(@hash[:id])
+          req.headers['Content-Type'] = 'application/json'
+          req.body = @hash.to_json
+        end
+
+        success = @response.status == 204
+        if success
+          get
+          update_hash_from_response
+        end
+        success
       end
 
       def has_id?
@@ -87,6 +95,7 @@ module Rsbe
       end
 
       def exists?
+        get
       end
 
       def coll_path
@@ -96,7 +105,6 @@ module Rsbe
       def item_path(id)
         coll_path + "/#{id}"
       end
-
     end
   end
 end

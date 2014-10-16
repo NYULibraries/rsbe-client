@@ -127,4 +127,51 @@ http_interactions:
         `<main>'\n\n"
     http_version: 
   recorded_at: Wed, 15 Oct 2014 13:26:46 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/abc123
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - b43b4e88-7df4-4b88-8f4e-c3117e90c0be
+      X-Runtime:
+      - '0.172816'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"ERROR:  invalid input syntax for uuid: \"abc123\""}'
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 13:39:21 GMT
 recorded_with: VCR 2.9.3

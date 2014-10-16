@@ -1,0 +1,98 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/b051f936-835c-4abb-9034-efa7508db4bf
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"4ef62b71afde6f5f042f199ebd3c7651"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 29affa84-c91a-488f-ab72-b430ea947817
+      X-Runtime:
+      - '0.107785'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"b051f936-835c-4abb-9034-efa7508db4bf","code":"onyx","name":null,"created_at":"2014-10-16T13:22:56.010Z","updated_at":"2014-10-16T13:39:21.521Z","colls_url":"http://localhost:3000/api/v0/partners/b051f936-835c-4abb-9034-efa7508db4bf/colls","lock_version":1,"rel_path":"o/n/y/x"}'
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 14:15:48 GMT
+- request:
+    method: put
+    uri: http://foo:bar@localhost:3000/api/v0/partners/b051f936-835c-4abb-9034-efa7508db4bf
+    body:
+      encoding: UTF-8
+      string: '{"id":"b051f936-835c-4abb-9034-efa7508db4bf","code":"onyx","name":"The
+        Black Onyx Syndicate","rel_path":"o/n/y/x","created_at":"2014-10-16T13:22:56.010Z","updated_at":"2014-10-16T13:39:21.521Z","lock_version":1}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 204
+      message: No Content
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      X-Request-Id:
+      - 859a6711-d483-4c40-ad5d-1c36d2dc0605
+      X-Runtime:
+      - '0.199148'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: ''
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 14:15:48 GMT
+recorded_with: VCR 2.9.3
