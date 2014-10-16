@@ -13,6 +13,21 @@ describe Rsbe::Client::Partner do
     end
   end
 
+  describe ".find" do
+    context "with id of existing Partner", vcr: {cassette_name: 'partner/find-existing'} do
+      subject { Rsbe::Client::Partner.find('b110731f-86af-4534-8e58-6d219dcb1c52') }
+      its(:class) { should eq Rsbe::Client::Partner }
+      its(:id)    { should eq 'b110731f-86af-4534-8e58-6d219dcb1c52' }
+      its(:code)  { should eq 'quux' }
+    end
+
+    context "with non-existant id", vcr: {cassette_name: 'partner/find-non_existent'} do
+      subject { Rsbe::Client::Partner.find('bad45d46-a14a-489f-97ac-384afb552a13') }
+      it 'should raise an Rsbe::Client::RecordNotFound' do
+        expect { subject }.to raise_error Rsbe::Client::RecordNotFound
+      end
+    end
+  end
 
   describe "#save" do
     context "when creating a new Partner" do
@@ -58,22 +73,6 @@ describe Rsbe::Client::Partner do
                                                   rel_path: 'b/a/z') }
         subject { partner }
         its(:save) { should eq false }
-      end
-    end
-
-    describe ".find" do
-      context "with id of existing Partner", vcr: {cassette_name: 'partner/find-existing'} do
-        subject { Rsbe::Client::Partner.find('b110731f-86af-4534-8e58-6d219dcb1c52') }
-        its(:class) { should eq Rsbe::Client::Partner }
-        its(:id)    { should eq 'b110731f-86af-4534-8e58-6d219dcb1c52' }
-        its(:code)  { should eq 'quux' }
-      end
-
-      context "with non-existant id", vcr: {cassette_name: 'partner/find-non_existent'} do
-        subject { Rsbe::Client::Partner.find('bad45d46-a14a-489f-97ac-384afb552a13') }
-        it 'should raise an Rsbe::Client::RecordNotFound' do
-          expect { subject }.to raise_error Rsbe::Client::RecordNotFound
-        end
       end
     end
   end
