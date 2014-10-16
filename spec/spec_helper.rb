@@ -1,5 +1,8 @@
 require_relative '../lib/rsbe/client'
+require 'rspec/its'
 require 'vcr'
+require 'webmock'
+require 'faraday'
 
 RSpec.configure do |config|
   config.filter_run :focus
@@ -8,8 +11,6 @@ RSpec.configure do |config|
   if config.files_to_run.one?
     config.default_formatter = 'doc'
   end
-
-  config.profile_examples = 10
 
   config.order = :random
 
@@ -30,6 +31,7 @@ VCR.configure do |c|
   c.cassette_library_dir = 'spec/vcr_cassettes'
   c.configure_rspec_metadata!
   c.hook_into :webmock
-  c.filter_sensitive_data('user') { ENV['RSBE_USER'] }
+  c.allow_http_connections_when_no_cassette = true
+  c.filter_sensitive_data('user')     { ENV['RSBE_USER'] }
   c.filter_sensitive_data('password') { ENV['RSBE_PASSWORD'] }
 end

@@ -1,0 +1,177 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://foo:bar@localhost:3000/api/v0/partners
+    body:
+      encoding: UTF-8
+      string: '{"id":"abc123","code":"baz a saurus","name":null,"rel_path":"b/a/z"}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 422
+      message: ''
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      X-Request-Id:
+      - 481d0aab-2ccb-455f-82c5-a8694efb55a4
+      X-Runtime:
+      - '1.055546'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: "ActiveRecord::RecordInvalid at /api/v0/partners\n===============================================\n\n>
+        Validation failed: Code invalid character in code\n\napp/controllers/api/v0/partners_controller.rb,
+        line 21\n------------------------------------------------------\n\n``` ruby\n
+        \  16           respond_with @partner\n   17         end\n   18   \n   19
+        \        # POST /api/v<N>/partners\n   20         def create\n>  21           @partner
+        = Partner.create!(partner_params)\n   22           respond_with @partner,
+        location: api_v0_partner_url(@partner)\n   23         end\n   24   \n   25
+        \        # PATCH/PUT /api/v<N>/partners/1\n   26         def update\n```\n\nApp
+        backtrace\n-------------\n\n - app/controllers/api/v0/partners_controller.rb:21:in
+        `create'\n\nFull backtrace\n--------------\n\n - activerecord (4.0.9) lib/active_record/validations.rb:57:in
+        `save!'\n - activerecord (4.0.9) lib/active_record/attribute_methods/dirty.rb:41:in
+        `save!'\n - activerecord (4.0.9) lib/active_record/transactions.rb:275:in
+        `block in save!'\n - activerecord (4.0.9) lib/active_record/transactions.rb:330:in
+        `block in with_transaction_returning_status'\n - activerecord (4.0.9) lib/active_record/connection_adapters/abstract/database_statements.rb:203:in
+        `block in transaction'\n - activerecord (4.0.9) lib/active_record/connection_adapters/abstract/database_statements.rb:211:in
+        `within_new_transaction'\n - activerecord (4.0.9) lib/active_record/connection_adapters/abstract/database_statements.rb:203:in
+        `transaction'\n - activerecord (4.0.9) lib/active_record/transactions.rb:209:in
+        `transaction'\n - activerecord (4.0.9) lib/active_record/transactions.rb:327:in
+        `with_transaction_returning_status'\n - activerecord (4.0.9) lib/active_record/transactions.rb:275:in
+        `save!'\n - activerecord (4.0.9) lib/active_record/validations.rb:41:in `create!'\n
+        - app/controllers/api/v0/partners_controller.rb:21:in `create'\n - actionpack
+        (4.0.9) lib/action_controller/metal/implicit_render.rb:4:in `send_action'\n
+        - actionpack (4.0.9) lib/abstract_controller/base.rb:189:in `process_action'\n
+        - actionpack (4.0.9) lib/action_controller/metal/rendering.rb:10:in `process_action'\n
+        - actionpack (4.0.9) lib/abstract_controller/callbacks.rb:18:in `block in
+        process_action'\n - activesupport (4.0.9) lib/active_support/callbacks.rb:443:in
+        `_run__2339628789173341845__process_action__callbacks'\n - activesupport (4.0.9)
+        lib/active_support/callbacks.rb:80:in `run_callbacks'\n - actionpack (4.0.9)
+        lib/abstract_controller/callbacks.rb:17:in `process_action'\n - actionpack
+        (4.0.9) lib/action_controller/metal/rescue.rb:29:in `process_action'\n - actionpack
+        (4.0.9) lib/action_controller/metal/instrumentation.rb:31:in `block in process_action'\n
+        - activesupport (4.0.9) lib/active_support/notifications.rb:159:in `block
+        in instrument'\n - activesupport (4.0.9) lib/active_support/notifications/instrumenter.rb:20:in
+        `instrument'\n - activesupport (4.0.9) lib/active_support/notifications.rb:159:in
+        `instrument'\n - actionpack (4.0.9) lib/action_controller/metal/instrumentation.rb:30:in
+        `process_action'\n - actionpack (4.0.9) lib/action_controller/metal/params_wrapper.rb:250:in
+        `process_action'\n - activerecord (4.0.9) lib/active_record/railties/controller_runtime.rb:18:in
+        `process_action'\n - actionpack (4.0.9) lib/abstract_controller/base.rb:136:in
+        `process'\n - actionpack (4.0.9) lib/abstract_controller/rendering.rb:44:in
+        `process'\n - actionpack (4.0.9) lib/action_controller/metal.rb:195:in `dispatch'\n
+        - actionpack (4.0.9) lib/action_controller/metal/rack_delegation.rb:13:in
+        `dispatch'\n - actionpack (4.0.9) lib/action_controller/metal.rb:231:in `block
+        in action'\n - actionpack (4.0.9) lib/action_dispatch/routing/route_set.rb:82:in
+        `dispatch'\n - actionpack (4.0.9) lib/action_dispatch/routing/route_set.rb:50:in
+        `call'\n - actionpack (4.0.9) lib/action_dispatch/journey/router.rb:71:in
+        `block in call'\n - actionpack (4.0.9) lib/action_dispatch/journey/router.rb:59:in
+        `call'\n - actionpack (4.0.9) lib/action_dispatch/routing/route_set.rb:676:in
+        `call'\n - meta_request (0.2.9) lib/meta_request/middlewares/app_request_handler.rb:13:in
+        `call'\n - rack-contrib (1.1.0) lib/rack/contrib/response_headers.rb:17:in
+        `call'\n - meta_request (0.2.9) lib/meta_request/middlewares/headers.rb:16:in
+        `call'\n - meta_request (0.2.9) lib/meta_request/middlewares/meta_request_handler.rb:13:in
+        `call'\n - rack (1.5.2) lib/rack/etag.rb:23:in `call'\n - rack (1.5.2) lib/rack/conditionalget.rb:35:in
+        `call'\n - rack (1.5.2) lib/rack/head.rb:11:in `call'\n - actionpack (4.0.9)
+        lib/action_dispatch/middleware/params_parser.rb:27:in `call'\n - actionpack
+        (4.0.9) lib/action_dispatch/middleware/flash.rb:241:in `call'\n - rack (1.5.2)
+        lib/rack/session/abstract/id.rb:225:in `context'\n - rack (1.5.2) lib/rack/session/abstract/id.rb:220:in
+        `call'\n - actionpack (4.0.9) lib/action_dispatch/middleware/cookies.rb:486:in
+        `call'\n - activerecord (4.0.9) lib/active_record/query_cache.rb:36:in `call'\n
+        - activerecord (4.0.9) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in
+        `call'\n - activerecord (4.0.9) lib/active_record/migration.rb:373:in `call'\n
+        - actionpack (4.0.9) lib/action_dispatch/middleware/callbacks.rb:29:in `block
+        in call'\n - activesupport (4.0.9) lib/active_support/callbacks.rb:373:in
+        `_run__1475751813998848685__call__callbacks'\n - activesupport (4.0.9) lib/active_support/callbacks.rb:80:in
+        `run_callbacks'\n - actionpack (4.0.9) lib/action_dispatch/middleware/callbacks.rb:27:in
+        `call'\n - actionpack (4.0.9) lib/action_dispatch/middleware/reloader.rb:64:in
+        `call'\n - actionpack (4.0.9) lib/action_dispatch/middleware/remote_ip.rb:76:in
+        `call'\n - better_errors (1.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'\n
+        - better_errors (1.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'\n
+        - better_errors (1.1.0) lib/better_errors/middleware.rb:56:in `call'\n - actionpack
+        (4.0.9) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'\n
+        - actionpack (4.0.9) lib/action_dispatch/middleware/show_exceptions.rb:30:in
+        `call'\n - railties (4.0.9) lib/rails/rack/logger.rb:38:in `call_app'\n -
+        railties (4.0.9) lib/rails/rack/logger.rb:20:in `block in call'\n - activesupport
+        (4.0.9) lib/active_support/tagged_logging.rb:68:in `block in tagged'\n - activesupport
+        (4.0.9) lib/active_support/tagged_logging.rb:26:in `tagged'\n - activesupport
+        (4.0.9) lib/active_support/tagged_logging.rb:68:in `tagged'\n - railties (4.0.9)
+        lib/rails/rack/logger.rb:20:in `call'\n - actionpack (4.0.9) lib/action_dispatch/middleware/request_id.rb:21:in
+        `call'\n - rack (1.5.2) lib/rack/methodoverride.rb:21:in `call'\n - rack (1.5.2)
+        lib/rack/runtime.rb:17:in `call'\n - activesupport (4.0.9) lib/active_support/cache/strategy/local_cache.rb:83:in
+        `call'\n - rack (1.5.2) lib/rack/lock.rb:17:in `call'\n - actionpack (4.0.9)
+        lib/action_dispatch/middleware/static.rb:64:in `call'\n - rack (1.5.2) lib/rack/sendfile.rb:112:in
+        `call'\n - railties (4.0.9) lib/rails/engine.rb:511:in `call'\n - railties
+        (4.0.9) lib/rails/application.rb:97:in `call'\n - rack (1.5.2) lib/rack/content_length.rb:14:in
+        `call'\n - thin (1.6.2) lib/thin/connection.rb:86:in `block in pre_process'\n
+        - thin (1.6.2) lib/thin/connection.rb:84:in `pre_process'\n - thin (1.6.2)
+        lib/thin/connection.rb:53:in `process'\n - thin (1.6.2) lib/thin/connection.rb:39:in
+        `receive_data'\n - eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'\n
+        - thin (1.6.2) lib/thin/backends/base.rb:73:in `start'\n - thin (1.6.2) lib/thin/server.rb:162:in
+        `start'\n - rack (1.5.2) lib/rack/handler/thin.rb:16:in `run'\n - rack (1.5.2)
+        lib/rack/server.rb:264:in `start'\n - railties (4.0.9) lib/rails/commands/server.rb:84:in
+        `start'\n - railties (4.0.9) lib/rails/commands.rb:76:in `block in <top (required)>'\n
+        - railties (4.0.9) lib/rails/commands.rb:71:in `<top (required)>'\n - bin/rails:4:in
+        `<main>'\n\n"
+    http_version: 
+  recorded_at: Wed, 15 Oct 2014 13:26:46 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/abc123
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 400
+      message: Bad Request
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - b43b4e88-7df4-4b88-8f4e-c3117e90c0be
+      X-Runtime:
+      - '0.172816'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"ERROR:  invalid input syntax for uuid: \"abc123\""}'
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 13:39:21 GMT
+recorded_with: VCR 2.9.3
