@@ -14,11 +14,11 @@ This library allows one to interact with the R* Backend (rsbe) API.
 * As an Authorized Client, I want to create a new Partner and have it persist.
 * As an Authorized Client, I want to update a Partner.
 * As an Authorized Client, I want to find a Partner by id.
+* As an Authorized Client, I want to get a list of all available Partners.
 
 
 #### Pending User stories:
 * As an Authorized Client, I want to find a Partner by code.
-* As an Authorized Client, I want to get a list of all available Partners.
 * As an Authorized Client, I want to list the Colls for a Partner.
 
 * As an Authorized Client, I want to create a new Coll and have it persist.
