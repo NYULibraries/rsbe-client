@@ -12,24 +12,22 @@ module Rsbe
 
       # returns a array of Partner objects
       def self.all
-        p = self.new(id: id)
-        raise Rsbe::Client::RecordNotFound.new("Partner with #{id} not found") unless p.send(:get)
-        p.send(:update_hash_from_response)
-        p
+        # p = self.new(id: id)
+        # raise Rsbe::Client::RecordNotFound.new("Partner with #{id} not found") unless p.send(:get)
+        # p.send(:update_hash_from_response)
+        # p
       end
 
-      class << self
-        private
-        def find_and_instantiate(id)
-          p = self.new(id: id)
-          if p.send(:get)
-            p.send(:update_hash_from_response)
-          else
-            p = nil
-          end
-          p
+      def self.find_and_instantiate(id)
+        p = self.new(id: id)
+        if p.send(:get)
+          p.send(:update_hash_from_response)
+        else
+          p = nil
         end
+        p
       end
+      private_class_method :find_and_instantiate
 
       # implementation objectives:
       # - expose attributes via standard setter/getter methods
