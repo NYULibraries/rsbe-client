@@ -10,14 +10,18 @@ Client library for interaction with the rsbe API
 
 This library allows one to interact with the R* Backend (rsbe) API.
 
-#### User stories:
+#### Completed User stories:
 * As an Authorized Client, I want to create a new Partner and have it persist.
 * As an Authorized Client, I want to update a Partner.
-* As an Authorized Client, I want to get a list of Partners.
+* As an Authorized Client, I want to find a Partner by id.
+
+
+#### Pending User stories:
+* As an Authorized Client, I want to find a Partner by code.
+* As an Authorized Client, I want to get a list of all available Partners.
 * As an Authorized Client, I want to list the Colls for a Partner.
 
 * As an Authorized Client, I want to create a new Coll and have it persist.
-
 
 * As an Authorized Client, I want to create a new FMD.
 * As an Authorized Client, I want to use a checksum to find a list of all  
@@ -46,10 +50,9 @@ Rsbe::Partner.where(condition)
 ```
 
 ```
-Rsbe::Partner#valid?
 Rsbe::Partner#save
 Rsbe::Partner#code
-Rsbe::Partner#long_name
+Rsbe::Partner#name
 Rsbe::Partner#collections
 ```
 
