@@ -3,6 +3,7 @@ require 'rspec/its'
 require 'vcr'
 require 'webmock'
 require 'faraday'
+require 'pry'
 
 RSpec.configure do |config|
   config.filter_run :focus
