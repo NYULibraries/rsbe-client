@@ -10,17 +10,14 @@ module Rsbe
         p
       end
 
-      # FIXME : REFACTOR
+      def self.base_path
+        super + '/partners'
+      end
+
       # returns an array of Partner objects
       def self.all
-        user     = ENV['RSBE_USER']     || 'foo'
-        password = ENV['RSBE_PASSWORD'] || 'bar'
-        url      = ENV['RSBE_URL']      || 'http://localhost:3000'
-        conn     = Faraday.new(url: url) do |faraday|
-          faraday.adapter  Faraday.default_adapter  # make requests with Net::HTTP
-        end
-        conn.basic_auth(user, password)
-        local_response = conn.get COLL_PATH
+        conn = Rsbe::Client::Connection.new
+        local_response = conn.get base_path
         raise "Error retrieving partners" unless local_response.status == 200
         JSON.parse(local_response.body).collect {|json_hash| find_and_instantiate(json_hash['id'])}
       end
@@ -43,7 +40,6 @@ module Rsbe
       # - use hash for internal representation to simplify passing
       #   data back and forth to back end app
 
-      COLL_PATH = Rsbe::Client::Base::PATH + '/partners'
       RW_ATTRS  = [:id, :code, :name, :rel_path]
       RO_ATTRS  = [:created_at, :updated_at, :lock_version]
       ALL_ATTRS = RW_ATTRS + RO_ATTRS
@@ -124,8 +120,12 @@ module Rsbe
         get
       end
 
+      def base_path
+        self.class.base_path
+      end
+
       def coll_path
-        COLL_PATH
+        base_path
       end
 
       def item_path(id)

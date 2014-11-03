@@ -12,7 +12,10 @@ describe Rsbe::Client::Partner do
       end
     end
   end
-
+  describe ".base_path" do
+    subject { Rsbe::Client::Partner }
+    its(:base_path) { should eq '/api/v0/partners' }
+  end
   describe ".all", vcr: {cassette_name: 'partner/all'} do
     context "returned array" do
       subject { Rsbe::Client::Partner.all }

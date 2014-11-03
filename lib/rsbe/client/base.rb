@@ -7,7 +7,7 @@ module Rsbe
       def initialize
         @conn = Rsbe::Client::Connection.new
       end
-      def base_path
+      def self.base_path
         '/api/v0'
       end
     end
