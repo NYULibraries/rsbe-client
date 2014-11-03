@@ -6,7 +6,7 @@ module Rsbe
       extend Forwardable
       def_delegators :@conn, :get, :put, :post, :delete, :patch
 
-      def new
+      def initialize
         @user     = ENV['RSBE_USER']     || 'foo'
         @password = ENV['RSBE_PASSWORD'] || 'bar'
         @url      = ENV['RSBE_URL']      || 'http://localhost:3000'
@@ -15,7 +15,6 @@ module Rsbe
         end
         @conn.basic_auth(@user, @password)
       end
-      PATH = '/api/v0'
     end
   end
 end
