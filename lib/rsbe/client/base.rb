@@ -4,6 +4,31 @@ require 'json'
 module Rsbe
   module Client
     class Base
+      def self.find(id)
+        p = find_and_instantiate(id)
+        raise Rsbe::Client::RecordNotFound.new("Partner with #{id} not found") if p.nil?
+        p
+      end
+
+      # returns an array of Partner objects
+      def self.all
+        conn = Rsbe::Client::Connection.new
+        local_response = conn.get base_path
+        raise "Error retrieving partners" unless local_response.status == 200
+        JSON.parse(local_response.body).collect {|json_hash| find_and_instantiate(json_hash['id'])}
+      end
+
+      def self.find_and_instantiate(id)
+        p = self.new(id: id)
+        if p.send(:get)
+          p.send(:update_hash_from_response)
+        else
+          p = nil
+        end
+        p
+      end
+      private_class_method :find_and_instantiate
+
       def initialize
         @conn = Rsbe::Client::Connection.new
       end
@@ -86,8 +111,6 @@ module Rsbe
       def self.all_attrs
         self.rw_attrs + self.ro_attrs
       end
-
-
     end
   end
 end
