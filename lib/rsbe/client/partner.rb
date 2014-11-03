@@ -120,12 +120,8 @@ module Rsbe
         get
       end
 
-      def base_path
-        self.class.base_path
-      end
-
       def coll_path
-        base_path
+        self.class.base_path
       end
 
       def item_path(id)
