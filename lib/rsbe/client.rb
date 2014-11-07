@@ -1,4 +1,4 @@
-%w(base partner connection not_found_error).each do |r|
+%w(base partner collection connection not_found_error method_not_implemented_error).each do |r|
   require_relative "./client/#{r}"
 end
 
