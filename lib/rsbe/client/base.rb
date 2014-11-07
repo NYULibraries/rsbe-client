@@ -5,9 +5,9 @@ module Rsbe
   module Client
     class Base
       def self.find(id)
-        p = find_and_instantiate(id)
-        raise Rsbe::Client::RecordNotFound.new("Partner with #{id} not found") if p.nil?
-        p
+        o = find_and_instantiate(id)
+        raise Rsbe::Client::RecordNotFound.new("#{self.name} with #{id} not found") if o.nil?
+        o
       end
 
       # returns an array of Partner objects
@@ -43,6 +43,12 @@ module Rsbe
       # N.B. intentionally not updating hash here
       def get(id = @hash[:id])
         @response = @conn.get item_path(id)
+        @response.status == 200
+      end
+
+      def get_children(path_segment)
+        path = item_path(id) + '/' + path_segment
+        @response = @conn.get path
         @response.status == 200
       end
 

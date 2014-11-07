@@ -6,6 +6,11 @@ require 'faraday'
 require 'pry'
 
 RSpec.configure do |config|
+  # protect against hitting production service
+  ENV['RSBE_USER']     = nil
+  ENV['RSBE_PASSWORD'] = nil
+  ENV['RSBE_HOST']     = nil
+
   config.filter_run :focus
   config.run_all_when_everything_filtered = true
 

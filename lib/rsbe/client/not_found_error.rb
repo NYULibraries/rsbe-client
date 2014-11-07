@@ -1,4 +1,6 @@
-module Rsbe::Client
-  class RecordNotFound < RuntimeError
+module Rsbe
+  module Client
+    class RecordNotFound < RuntimeError
+    end
   end
 end

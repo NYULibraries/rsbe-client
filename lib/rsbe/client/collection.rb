@@ -2,21 +2,17 @@ require 'active_support'
 
 module Rsbe
   module Client
-    class Partner < Base
-
-      def self.base_path
-        super + '/partners'
+    class Collection < Base
+      def self.all
+        raise Rsbe::Client::MethodNotImplementedError.new("Method not supported. Access via Rsbe::Client::Partner#collections")
       end
 
-      # implementation objectives:
-      # - expose attributes via standard setter/getter methods
-      # - create getters for  all Read-Only  (RO) attributes
-      # - create setters only for Read/Write (RW) attributes
-      # - use hash for internal representation to simplify passing
-      #   data back and forth to back end app
+      def self.base_path
+        super + '/colls'
+      end
 
       def self.rw_attrs
-        [:id, :code, :name, :rel_path]
+        [:id, :code, :partner_id, :coll_type, :quota, :name, :rel_path]
       end
 
       def self.ro_attrs
@@ -42,12 +38,9 @@ module Rsbe
         # initialize local hash with incoming values, restrict to RW attrs
         self.class.rw_attrs.each {|x| @hash[x] = vals[x]}
       end
-
-      def collections
-        unless get_children('colls')
-          raise "Error getting collections"
-        end
-        JSON.parse(@response.body).collect {|json_hash| Rsbe::Client::Collection.find(json_hash['id'])}
+      def create_path
+        raise "partner_id not initialized!" unless partner_id
+        Rsbe::Client::Partner.item_path(partner_id)
       end
     end
   end

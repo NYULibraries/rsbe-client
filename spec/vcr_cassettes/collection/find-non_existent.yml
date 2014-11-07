@@ -1,0 +1,50 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/colls/bad45d46-a14a-489f-97ac-384afb552a13
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 6d098f67-be03-482e-be0c-7ded89675152
+      X-Runtime:
+      - '0.081581'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"Couldn''t find Coll with id=bad45d46-a14a-489f-97ac-384afb552a13"}'
+    http_version: 
+  recorded_at: Fri, 07 Nov 2014 14:57:15 GMT
+recorded_with: VCR 2.9.3
