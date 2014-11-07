@@ -5,9 +5,9 @@ module Rsbe
   module Client
     class Base
       def self.find(id)
-        p = find_and_instantiate(id)
-        raise Rsbe::Client::RecordNotFound.new("Partner with #{id} not found") if p.nil?
-        p
+        o = find_and_instantiate(id)
+        raise Rsbe::Client::RecordNotFound.new("#{self.name} with #{id} not found") if o.nil?
+        o
       end
 
       # returns an array of Partner objects
