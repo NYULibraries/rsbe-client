@@ -46,6 +46,12 @@ module Rsbe
         @response.status == 200
       end
 
+      def get_children(path_segment)
+        path = item_path(id) + '/' + path_segment
+        @response = @conn.get path
+        @response.status == 200
+      end
+
       def create
         @response = @conn.post do |req|
           req.url coll_path
