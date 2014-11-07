@@ -1,0 +1,143 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://foo:bar@localhost:3000/api/v0/colls
+    body:
+      encoding: UTF-8
+      string: '{"id":null,"code":null,"partner_id":"5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa","coll_type":"banana
+        frappe","quota":null,"name":null,"rel_path":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 422
+      message: ''
+    headers:
+      Content-Type:
+      - text/plain; charset=utf-8
+      X-Request-Id:
+      - d178c9ea-f873-436d-a5c7-33ea8f5960a7
+      X-Runtime:
+      - '0.146126'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: "ActiveRecord::RecordInvalid at /api/v0/colls\n============================================\n\n>
+        Validation failed: Code can't be blank, Code invalid character in code, Coll
+        type is not included in the list, Quota can't be blank, Quota is not a number\n\napp/controllers/api/v0/colls_controller.rb,
+        line 23\n---------------------------------------------------\n\n``` ruby\n
+        \  18         end\n   19   \n   20         # POST /api/v<N>/partners/:partner_id/colls\n
+        \  21         # POST /api/v<N>/colls\n   22         def create\n>  23           @coll
+        = @partner.colls.create!(coll_params)\n   24           respond_with @coll,
+        location: api_v0_coll_url(@coll)\n   25         end\n   26   \n   27         #
+        PATCH/PUT /api/v<N>/colls/1\n   28         def update\n```\n\nApp backtrace\n-------------\n\n
+        - app/controllers/api/v0/colls_controller.rb:23:in `create'\n\nFull backtrace\n--------------\n\n
+        - activerecord (4.0.11) lib/active_record/validations.rb:57:in `save!'\n -
+        activerecord (4.0.11) lib/active_record/attribute_methods/dirty.rb:41:in `save!'\n
+        - activerecord (4.0.11) lib/active_record/transactions.rb:275:in `block in
+        save!'\n - activerecord (4.0.11) lib/active_record/transactions.rb:330:in
+        `block in with_transaction_returning_status'\n - activerecord (4.0.11) lib/active_record/connection_adapters/abstract/database_statements.rb:201:in
+        `transaction'\n - activerecord (4.0.11) lib/active_record/transactions.rb:209:in
+        `transaction'\n - activerecord (4.0.11) lib/active_record/transactions.rb:327:in
+        `with_transaction_returning_status'\n - activerecord (4.0.11) lib/active_record/transactions.rb:275:in
+        `save!'\n - activerecord (4.0.11) lib/active_record/associations/has_many_association.rb:38:in
+        `insert_record'\n - activerecord (4.0.11) lib/active_record/associations/collection_association.rb:463:in
+        `block (2 levels) in _create_record'\n - activerecord (4.0.11) lib/active_record/associations/collection_association.rb:367:in
+        `add_to_target'\n - activerecord (4.0.11) lib/active_record/associations/collection_association.rb:461:in
+        `block in _create_record'\n - activerecord (4.0.11) lib/active_record/associations/collection_association.rb:152:in
+        `block in transaction'\n - activerecord (4.0.11) lib/active_record/connection_adapters/abstract/database_statements.rb:203:in
+        `block in transaction'\n - activerecord (4.0.11) lib/active_record/connection_adapters/abstract/database_statements.rb:211:in
+        `within_new_transaction'\n - activerecord (4.0.11) lib/active_record/connection_adapters/abstract/database_statements.rb:203:in
+        `transaction'\n - activerecord (4.0.11) lib/active_record/transactions.rb:209:in
+        `transaction'\n - activerecord (4.0.11) lib/active_record/associations/collection_association.rb:151:in
+        `transaction'\n - activerecord (4.0.11) lib/active_record/associations/collection_association.rb:460:in
+        `_create_record'\n - activerecord (4.0.11) lib/active_record/associations/collection_association.rb:125:in
+        `create!'\n - activerecord (4.0.11) lib/active_record/associations/collection_proxy.rb:276:in
+        `create!'\n - app/controllers/api/v0/colls_controller.rb:23:in `create'\n
+        - actionpack (4.0.11) lib/action_controller/metal/implicit_render.rb:4:in
+        `send_action'\n - actionpack (4.0.11) lib/abstract_controller/base.rb:189:in
+        `process_action'\n - actionpack (4.0.11) lib/action_controller/metal/rendering.rb:10:in
+        `process_action'\n - actionpack (4.0.11) lib/abstract_controller/callbacks.rb:18:in
+        `block in process_action'\n - activesupport (4.0.11) lib/active_support/callbacks.rb:453:in
+        `_run__2458793115659532425__process_action__callbacks'\n - activesupport (4.0.11)
+        lib/active_support/callbacks.rb:80:in `run_callbacks'\n - actionpack (4.0.11)
+        lib/abstract_controller/callbacks.rb:17:in `process_action'\n - actionpack
+        (4.0.11) lib/action_controller/metal/rescue.rb:29:in `process_action'\n -
+        actionpack (4.0.11) lib/action_controller/metal/instrumentation.rb:31:in `block
+        in process_action'\n - activesupport (4.0.11) lib/active_support/notifications.rb:159:in
+        `block in instrument'\n - activesupport (4.0.11) lib/active_support/notifications/instrumenter.rb:20:in
+        `instrument'\n - activesupport (4.0.11) lib/active_support/notifications.rb:159:in
+        `instrument'\n - actionpack (4.0.11) lib/action_controller/metal/instrumentation.rb:30:in
+        `process_action'\n - actionpack (4.0.11) lib/action_controller/metal/params_wrapper.rb:250:in
+        `process_action'\n - activerecord (4.0.11) lib/active_record/railties/controller_runtime.rb:18:in
+        `process_action'\n - actionpack (4.0.11) lib/abstract_controller/base.rb:136:in
+        `process'\n - actionpack (4.0.11) lib/abstract_controller/rendering.rb:44:in
+        `process'\n - actionpack (4.0.11) lib/action_controller/metal.rb:195:in `dispatch'\n
+        - actionpack (4.0.11) lib/action_controller/metal/rack_delegation.rb:13:in
+        `dispatch'\n - actionpack (4.0.11) lib/action_controller/metal.rb:231:in `block
+        in action'\n - actionpack (4.0.11) lib/action_dispatch/routing/route_set.rb:82:in
+        `dispatch'\n - actionpack (4.0.11) lib/action_dispatch/routing/route_set.rb:50:in
+        `call'\n - actionpack (4.0.11) lib/action_dispatch/journey/router.rb:71:in
+        `block in call'\n - actionpack (4.0.11) lib/action_dispatch/journey/router.rb:59:in
+        `call'\n - actionpack (4.0.11) lib/action_dispatch/routing/route_set.rb:676:in
+        `call'\n - meta_request (0.2.9) lib/meta_request/middlewares/app_request_handler.rb:13:in
+        `call'\n - rack-contrib (1.1.0) lib/rack/contrib/response_headers.rb:17:in
+        `call'\n - meta_request (0.2.9) lib/meta_request/middlewares/headers.rb:16:in
+        `call'\n - meta_request (0.2.9) lib/meta_request/middlewares/meta_request_handler.rb:13:in
+        `call'\n - rack (1.5.2) lib/rack/etag.rb:23:in `call'\n - rack (1.5.2) lib/rack/conditionalget.rb:35:in
+        `call'\n - rack (1.5.2) lib/rack/head.rb:11:in `call'\n - actionpack (4.0.11)
+        lib/action_dispatch/middleware/params_parser.rb:27:in `call'\n - actionpack
+        (4.0.11) lib/action_dispatch/middleware/flash.rb:241:in `call'\n - rack (1.5.2)
+        lib/rack/session/abstract/id.rb:225:in `context'\n - rack (1.5.2) lib/rack/session/abstract/id.rb:220:in
+        `call'\n - actionpack (4.0.11) lib/action_dispatch/middleware/cookies.rb:486:in
+        `call'\n - activerecord (4.0.11) lib/active_record/query_cache.rb:36:in `call'\n
+        - activerecord (4.0.11) lib/active_record/connection_adapters/abstract/connection_pool.rb:626:in
+        `call'\n - activerecord (4.0.11) lib/active_record/migration.rb:373:in `call'\n
+        - actionpack (4.0.11) lib/action_dispatch/middleware/callbacks.rb:29:in `block
+        in call'\n - activesupport (4.0.11) lib/active_support/callbacks.rb:373:in
+        `_run__1676798219391769666__call__callbacks'\n - activesupport (4.0.11) lib/active_support/callbacks.rb:80:in
+        `run_callbacks'\n - actionpack (4.0.11) lib/action_dispatch/middleware/callbacks.rb:27:in
+        `call'\n - actionpack (4.0.11) lib/action_dispatch/middleware/reloader.rb:64:in
+        `call'\n - actionpack (4.0.11) lib/action_dispatch/middleware/remote_ip.rb:76:in
+        `call'\n - better_errors (1.1.0) lib/better_errors/middleware.rb:84:in `protected_app_call'\n
+        - better_errors (1.1.0) lib/better_errors/middleware.rb:79:in `better_errors_call'\n
+        - better_errors (1.1.0) lib/better_errors/middleware.rb:56:in `call'\n - actionpack
+        (4.0.11) lib/action_dispatch/middleware/debug_exceptions.rb:17:in `call'\n
+        - actionpack (4.0.11) lib/action_dispatch/middleware/show_exceptions.rb:30:in
+        `call'\n - railties (4.0.11) lib/rails/rack/logger.rb:38:in `call_app'\n -
+        railties (4.0.11) lib/rails/rack/logger.rb:20:in `block in call'\n - activesupport
+        (4.0.11) lib/active_support/tagged_logging.rb:68:in `block in tagged'\n -
+        activesupport (4.0.11) lib/active_support/tagged_logging.rb:26:in `tagged'\n
+        - activesupport (4.0.11) lib/active_support/tagged_logging.rb:68:in `tagged'\n
+        - railties (4.0.11) lib/rails/rack/logger.rb:20:in `call'\n - actionpack (4.0.11)
+        lib/action_dispatch/middleware/request_id.rb:21:in `call'\n - rack (1.5.2)
+        lib/rack/methodoverride.rb:21:in `call'\n - rack (1.5.2) lib/rack/runtime.rb:17:in
+        `call'\n - activesupport (4.0.11) lib/active_support/cache/strategy/local_cache.rb:83:in
+        `call'\n - rack (1.5.2) lib/rack/lock.rb:17:in `call'\n - actionpack (4.0.11)
+        lib/action_dispatch/middleware/static.rb:84:in `call'\n - rack (1.5.2) lib/rack/sendfile.rb:112:in
+        `call'\n - railties (4.0.11) lib/rails/engine.rb:511:in `call'\n - railties
+        (4.0.11) lib/rails/application.rb:97:in `call'\n - rack (1.5.2) lib/rack/content_length.rb:14:in
+        `call'\n - thin (1.6.2) lib/thin/connection.rb:86:in `block in pre_process'\n
+        - thin (1.6.2) lib/thin/connection.rb:84:in `pre_process'\n - thin (1.6.2)
+        lib/thin/connection.rb:53:in `process'\n - thin (1.6.2) lib/thin/connection.rb:39:in
+        `receive_data'\n - eventmachine (1.0.3) lib/eventmachine.rb:187:in `run'\n
+        - thin (1.6.2) lib/thin/backends/base.rb:73:in `start'\n - thin (1.6.2) lib/thin/server.rb:162:in
+        `start'\n - rack (1.5.2) lib/rack/handler/thin.rb:16:in `run'\n - rack (1.5.2)
+        lib/rack/server.rb:264:in `start'\n - railties (4.0.11) lib/rails/commands/server.rb:84:in
+        `start'\n - railties (4.0.11) lib/rails/commands.rb:76:in `block in <top (required)>'\n
+        - railties (4.0.11) lib/rails/commands.rb:71:in `<top (required)>'\n - bin/rails:4:in
+        `<main>'\n\n"
+    http_version: 
+  recorded_at: Fri, 07 Nov 2014 14:57:14 GMT
+recorded_with: VCR 2.9.3
