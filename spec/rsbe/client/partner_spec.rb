@@ -114,4 +114,26 @@ describe Rsbe::Client::Partner do
       end
     end
   end
+  describe "#collections" do
+    context "when Partner has some collections", vcr: {cassette_name: 'partner/with-collections'} do
+      let(:partner) { Rsbe::Client::Partner.find('5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa') }
+      let(:collections) { partner.collections }
+
+      it "should return an Array of Collections" do
+        expect(collections).to be_instance_of Array
+        expect(collections.first).to be_instance_of Rsbe::Client::Collection
+        expect(collections.length).to eq 2
+        expect(collections.first.code).to eq 'luke'
+      end
+    end
+    context "when Partner doesn't have any collections", vcr: {cassette_name: 'partner/without-collections'} do
+      let(:partner) { Rsbe::Client::Partner.find('51213be7-c8de-4e06-8cc2-06bfc82cdd68') }
+      let(:collections) { partner.collections }
+
+      it "should return an Array of Collections" do
+        expect(collections).to be_instance_of Array
+        expect(collections.length).to eq 0
+      end
+    end
+  end
 end

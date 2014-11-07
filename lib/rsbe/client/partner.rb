@@ -42,6 +42,13 @@ module Rsbe
         # initialize local hash with incoming values, restrict to RW attrs
         self.class.rw_attrs.each {|x| @hash[x] = vals[x]}
       end
+
+      def collections
+        unless get_children('colls')
+          raise "Error getting collections"
+        end
+        JSON.parse(@response.body).collect {|json_hash| Rsbe::Client::Collection.find(json_hash['id'])}
+      end
     end
   end
 end
