@@ -1,0 +1,300 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"4835fb68b263b04e12f31205eea6e33f"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 55783cdf-c8a2-4ac1-aeff-144833d91955
+      X-Runtime:
+      - '0.162855'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '[{"id":"b110731f-86af-4534-8e58-6d219dcb1c52","code":"quux","name":null,"created_at":"2014-10-15T13:39:16.772Z","updated_at":"2014-10-15T13:39:16.772Z","url":"http://localhost:3000/api/v0/partners/b110731f-86af-4534-8e58-6d219dcb1c52"},{"id":"5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa","code":"foo","name":null,"created_at":"2014-10-16T14:06:28.938Z","updated_at":"2014-10-16T14:06:28.938Z","url":"http://localhost:3000/api/v0/partners/5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa"},{"id":"51213be7-c8de-4e06-8cc2-06bfc82cdd68","code":"bar","name":null,"created_at":"2014-10-16T14:08:36.445Z","updated_at":"2014-10-16T14:08:36.445Z","url":"http://localhost:3000/api/v0/partners/51213be7-c8de-4e06-8cc2-06bfc82cdd68"},{"id":"b051f936-835c-4abb-9034-efa7508db4bf","code":"onyx","name":"The
+        Black Onyx Syndicate","created_at":"2014-10-16T13:22:56.010Z","updated_at":"2014-10-16T14:15:48.799Z","url":"http://localhost:3000/api/v0/partners/b051f936-835c-4abb-9034-efa7508db4bf"}]'
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 16:10:14 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"4835fb68b263b04e12f31205eea6e33f"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 5d6cdbc4-c2f7-4602-89d3-c1684da304af
+      X-Runtime:
+      - '0.214117'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '[{"id":"b110731f-86af-4534-8e58-6d219dcb1c52","code":"quux","name":null,"created_at":"2014-10-15T13:39:16.772Z","updated_at":"2014-10-15T13:39:16.772Z","url":"http://localhost:3000/api/v0/partners/b110731f-86af-4534-8e58-6d219dcb1c52"},{"id":"5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa","code":"foo","name":null,"created_at":"2014-10-16T14:06:28.938Z","updated_at":"2014-10-16T14:06:28.938Z","url":"http://localhost:3000/api/v0/partners/5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa"},{"id":"51213be7-c8de-4e06-8cc2-06bfc82cdd68","code":"bar","name":null,"created_at":"2014-10-16T14:08:36.445Z","updated_at":"2014-10-16T14:08:36.445Z","url":"http://localhost:3000/api/v0/partners/51213be7-c8de-4e06-8cc2-06bfc82cdd68"},{"id":"b051f936-835c-4abb-9034-efa7508db4bf","code":"onyx","name":"The
+        Black Onyx Syndicate","created_at":"2014-10-16T13:22:56.010Z","updated_at":"2014-10-16T14:15:48.799Z","url":"http://localhost:3000/api/v0/partners/b051f936-835c-4abb-9034-efa7508db4bf"}]'
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 16:10:14 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/b110731f-86af-4534-8e58-6d219dcb1c52
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"ec5b1c107a94f0530671014fd06646c8"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 3eea2e96-c8ef-49e2-839c-dd1bf2505235
+      X-Runtime:
+      - '0.110204'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"b110731f-86af-4534-8e58-6d219dcb1c52","code":"quux","name":null,"created_at":"2014-10-15T13:39:16.772Z","updated_at":"2014-10-15T13:39:16.772Z","colls_url":"http://localhost:3000/api/v0/partners/b110731f-86af-4534-8e58-6d219dcb1c52/colls","lock_version":0,"rel_path":"q/u/u/x"}'
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 16:14:57 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"f0bce311187f92164a06b74d18f65b22"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 4b574b06-a842-4b5f-8b88-29e7f0793ece
+      X-Runtime:
+      - '0.107054'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa","code":"foo","name":null,"created_at":"2014-10-16T14:06:28.938Z","updated_at":"2014-10-16T14:06:28.938Z","colls_url":"http://localhost:3000/api/v0/partners/5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa/colls","lock_version":0,"rel_path":"f/o/o"}'
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 16:14:57 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/51213be7-c8de-4e06-8cc2-06bfc82cdd68
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"416e42db8d4cda42e4d97bac97df65fb"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - b0889f76-4087-43de-9370-61cc7d2baf26
+      X-Runtime:
+      - '0.107544'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"51213be7-c8de-4e06-8cc2-06bfc82cdd68","code":"bar","name":null,"created_at":"2014-10-16T14:08:36.445Z","updated_at":"2014-10-16T14:08:36.445Z","colls_url":"http://localhost:3000/api/v0/partners/51213be7-c8de-4e06-8cc2-06bfc82cdd68/colls","lock_version":0,"rel_path":"b/a/r"}'
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 16:14:58 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/b051f936-835c-4abb-9034-efa7508db4bf
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"784e9cc745597f6a427f3feb9839c17c"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - ad3d8187-71aa-47ae-a66d-179f06268f44
+      X-Runtime:
+      - '0.105874'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"b051f936-835c-4abb-9034-efa7508db4bf","code":"onyx","name":"The
+        Black Onyx Syndicate","created_at":"2014-10-16T13:22:56.010Z","updated_at":"2014-10-16T14:15:48.799Z","colls_url":"http://localhost:3000/api/v0/partners/b051f936-835c-4abb-9034-efa7508db4bf/colls","lock_version":2,"rel_path":"o/n/y/x"}'
+    http_version: 
+  recorded_at: Thu, 16 Oct 2014 16:14:58 GMT
+recorded_with: VCR 2.9.3

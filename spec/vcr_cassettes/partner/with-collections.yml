@@ -1,0 +1,203 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"f0bce311187f92164a06b74d18f65b22"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - a55b4c93-7500-4523-983b-fb07bd9c63a5
+      X-Runtime:
+      - '0.108835'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa","code":"foo","name":null,"created_at":"2014-10-16T14:06:28.938Z","updated_at":"2014-10-16T14:06:28.938Z","colls_url":"http://localhost:3000/api/v0/partners/5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa/colls","lock_version":0,"rel_path":"f/o/o"}'
+    http_version: 
+  recorded_at: Fri, 07 Nov 2014 20:40:15 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa/colls
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"6154eb7d3f8158008d9a95ad7b8aa752"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 473b061b-071d-470f-b3bc-edbc2d8aceb1
+      X-Runtime:
+      - '0.165129'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '[{"id":"8cdab8d4-6eb7-4ef3-9e53-93efb987cbaa","partner_id":"5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa","code":"luke","name":"Lasers
+        Under Kinetic Ether","coll_type":"origin","created_at":"2014-11-07T14:57:13.784Z","updated_at":"2014-11-07T14:57:13.784Z","url":"http://localhost:3000/api/v0/colls/8cdab8d4-6eb7-4ef3-9e53-93efb987cbaa","partner_url":"http://localhost:3000/api/v0/partners/5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa"},{"id":"07998216-af0a-4262-b7f9-6a7d9c4aeae4","partner_id":"5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa","code":"leia","name":"Last
+        Emu In Australia","coll_type":"origin","created_at":"2014-11-07T14:57:14.130Z","updated_at":"2014-11-07T14:57:14.727Z","url":"http://localhost:3000/api/v0/colls/07998216-af0a-4262-b7f9-6a7d9c4aeae4","partner_url":"http://localhost:3000/api/v0/partners/5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa"}]'
+    http_version: 
+  recorded_at: Fri, 07 Nov 2014 20:40:15 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/colls/8cdab8d4-6eb7-4ef3-9e53-93efb987cbaa
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"2f962f256a49f7be152b112c118df259"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 90537724-7164-4c21-84e9-7c44c2651439
+      X-Runtime:
+      - '0.105542'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"8cdab8d4-6eb7-4ef3-9e53-93efb987cbaa","partner_id":"5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa","code":"luke","name":"Lasers
+        Under Kinetic Ether","coll_type":"origin","created_at":"2014-11-07T14:57:13.784Z","updated_at":"2014-11-07T14:57:13.784Z","quota":1024,"ready_for_content":false,"partner_url":"http://localhost:3000/api/v0/partners/5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa","lock_version":0,"rel_path":null}'
+    http_version: 
+  recorded_at: Fri, 07 Nov 2014 20:40:15 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/colls/07998216-af0a-4262-b7f9-6a7d9c4aeae4
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"f4765c49365aba54d8b4a44557b4d3c3"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 60a732ae-2aa0-4696-a4f7-34fccd2a7041
+      X-Runtime:
+      - '0.104391'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"07998216-af0a-4262-b7f9-6a7d9c4aeae4","partner_id":"5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa","code":"leia","name":"Last
+        Emu In Australia","coll_type":"origin","created_at":"2014-11-07T14:57:14.130Z","updated_at":"2014-11-07T14:57:14.727Z","quota":123,"ready_for_content":false,"partner_url":"http://localhost:3000/api/v0/partners/5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa","lock_version":1,"rel_path":null}'
+    http_version: 
+  recorded_at: Fri, 07 Nov 2014 20:40:15 GMT
+recorded_with: VCR 2.9.3

@@ -1,0 +1,56 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://foo:bar@localhost:3000/api/v0/colls
+    body:
+      encoding: UTF-8
+      string: '{"id":null,"code":"luke","partner_id":"5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa","coll_type":"origin","quota":1024,"name":"Lasers
+        Under Kinetic Ether","rel_path":null}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Location:
+      - http://localhost:3000/api/v0/colls/8cdab8d4-6eb7-4ef3-9e53-93efb987cbaa
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"da5808f983ced7b09ba92b3f989dcea4"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - becff9bb-79b9-4a55-8ec5-3e15916b12b4
+      X-Runtime:
+      - '0.215941'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"8cdab8d4-6eb7-4ef3-9e53-93efb987cbaa","partner_id":"5c902ffa-b2d9-4b8a-bac6-6ec8cfb50baa","code":"luke","name":"Lasers
+        Under Kinetic Ether","rel_path":null,"quota":1024,"coll_type":"origin","ready_for_content":false,"lock_version":0,"created_at":"2014-11-07T14:57:13.784Z","updated_at":"2014-11-07T14:57:13.784Z"}'
+    http_version: 
+  recorded_at: Fri, 07 Nov 2014 14:57:13 GMT
+recorded_with: VCR 2.9.3
