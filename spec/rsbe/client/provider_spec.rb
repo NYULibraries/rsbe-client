@@ -79,6 +79,37 @@ describe Rsbe::Client::Provider do
           end
         end
       end
+
+      context "with invalid attributes", vcr: {cassette_name: 'provider/save-invalid'} do
+        let(:provider) { Rsbe::Client::Provider.new(id:   'abc123',
+                                                    name: '') }
+        subject { provider }
+        its(:save) { should eq false }
+      end
+    end
+
+    context "when updating a Provider" do
+      context "with valid attributes", vcr: {cassette_name: 'provider/save-update-valid'} do
+        let(:provider) { Rsbe::Client::Provider.find('51213be7-c8de-4e06-8cc2-06bfc82cdd68') }
+        subject { provider }
+        context "before save-as-update" do
+          its(:id)         { should eq '51213be7-c8de-4e06-8cc2-06bfc82cdd68' }
+          its(:name)       { should eq 'Octavius' }
+          its(:created_at) { should_not be_nil }
+          its(:updated_at) { should_not be_nil }
+        end
+
+        context "on save-as-update" do
+          before { provider.name = 'Calpurnia' }
+          its(:save) { should eq true }
+          context "after save" do
+            its(:id)         { should eq '51213be7-c8de-4e06-8cc2-06bfc82cdd68' }
+            its(:name)       { should eq 'Calpurnia' }
+            its(:created_at) { should_not be_nil }
+            its(:updated_at) { should_not be_nil }
+          end
+        end
+      end
     end
   end
 end
