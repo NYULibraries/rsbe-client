@@ -1,0 +1,248 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/providers
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"4e20c1385d5014d8a299425611473d40"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 9f78a1dd-4c7b-4a60-a8c8-fcf928b9a9f5
+      X-Runtime:
+      - '0.291113'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '[{"id":"0938b200-e388-4626-bee8-69b3fc73ecdb","name":"Portia","created_at":"2015-08-10T02:51:43.853Z","updated_at":"2015-08-10T02:51:43.853Z","url":"http://localhost:3000/api/v0/providers/0938b200-e388-4626-bee8-69b3fc73ecdb"},{"id":"42229f77-8ecf-4dc9-8442-235b6382ace9","name":"Cassius","created_at":"2015-08-10T02:52:19.147Z","updated_at":"2015-08-10T02:52:19.147Z","url":"http://localhost:3000/api/v0/providers/42229f77-8ecf-4dc9-8442-235b6382ace9"},{"id":"99773b2d-5ed3-43c9-ac8c-2e06cffb6772","name":"Caesar","created_at":"2015-08-10T02:52:40.635Z","updated_at":"2015-08-10T02:52:40.635Z","url":"http://localhost:3000/api/v0/providers/99773b2d-5ed3-43c9-ac8c-2e06cffb6772"},{"id":"ff7ac5cb-72c3-4021-942d-f7b0c9ec7caf","name":"Brutus","created_at":"2015-08-10T02:53:01.731Z","updated_at":"2015-08-10T02:53:01.731Z","url":"http://localhost:3000/api/v0/providers/ff7ac5cb-72c3-4021-942d-f7b0c9ec7caf"}]'
+    http_version: 
+  recorded_at: Mon, 10 Aug 2015 02:55:02 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/providers/0938b200-e388-4626-bee8-69b3fc73ecdb
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"770f7ebbe3708957ff501285e8ab86d9"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - f49880ab-c856-4464-ab6f-f20873817a59
+      X-Runtime:
+      - '0.154230'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"0938b200-e388-4626-bee8-69b3fc73ecdb","name":"Portia","created_at":"2015-08-10T02:51:43.853Z","updated_at":"2015-08-10T02:51:43.853Z","providers_url":"http://localhost:3000/api/v0/providers","lock_version":0}'
+    http_version: 
+  recorded_at: Mon, 10 Aug 2015 02:55:02 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/providers/42229f77-8ecf-4dc9-8442-235b6382ace9
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"94e0f227684b1c7fead2c92b58346568"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - ec4aed2b-9c48-4763-8e0c-a44f3a0a2869
+      X-Runtime:
+      - '0.107511'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"42229f77-8ecf-4dc9-8442-235b6382ace9","name":"Cassius","created_at":"2015-08-10T02:52:19.147Z","updated_at":"2015-08-10T02:52:19.147Z","providers_url":"http://localhost:3000/api/v0/providers","lock_version":0}'
+    http_version: 
+  recorded_at: Mon, 10 Aug 2015 02:55:02 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/providers/99773b2d-5ed3-43c9-ac8c-2e06cffb6772
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"9dfb7b86aea694a3d1799e3823619efc"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 706f00d4-97c1-4418-a740-322220aaef06
+      X-Runtime:
+      - '0.109001'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"99773b2d-5ed3-43c9-ac8c-2e06cffb6772","name":"Caesar","created_at":"2015-08-10T02:52:40.635Z","updated_at":"2015-08-10T02:52:40.635Z","providers_url":"http://localhost:3000/api/v0/providers","lock_version":0}'
+    http_version: 
+  recorded_at: Mon, 10 Aug 2015 02:55:02 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/providers/ff7ac5cb-72c3-4021-942d-f7b0c9ec7caf
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"bde57959da46dc6cd8e025d3bfc9bc2b"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - d6975ce5-9ddb-4252-a52d-a364622af8c6
+      X-Runtime:
+      - '0.109820'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"ff7ac5cb-72c3-4021-942d-f7b0c9ec7caf","name":"Brutus","created_at":"2015-08-10T02:53:01.731Z","updated_at":"2015-08-10T02:53:01.731Z","providers_url":"http://localhost:3000/api/v0/providers","lock_version":0}'
+    http_version: 
+  recorded_at: Mon, 10 Aug 2015 02:55:02 GMT
+recorded_with: VCR 2.9.3
