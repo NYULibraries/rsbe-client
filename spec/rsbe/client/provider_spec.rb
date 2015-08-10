@@ -61,6 +61,22 @@ describe Rsbe::Client::Provider do
             its(:created_at) { should_not be_nil  }
             its(:updated_at) { should_not be_nil  }
           end
+
+          context "and a known id", vcr: {cassette_name: 'provider/save-create-known-id'} do
+            let(:provider) do
+              Rsbe::Client::Provider.new(id:   '51213be7-c8de-4e06-8cc2-06bfc82cdd68',
+                                         name: 'Octavius')
+            end
+            subject { provider }
+            its(:save) { should eq true }
+            context "after save" do
+              before { provider.save }
+              its(:id)         { should eq '51213be7-c8de-4e06-8cc2-06bfc82cdd68' }
+              its(:name)       { should eq 'Octavius' }
+              its(:created_at) { should_not be_nil }
+              its(:updated_at) { should_not be_nil }
+            end
+          end
         end
       end
     end
