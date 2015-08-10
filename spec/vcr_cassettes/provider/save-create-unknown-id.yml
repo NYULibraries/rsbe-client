@@ -1,0 +1,54 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: http://foo:bar@localhost:3000/api/v0/providers
+    body:
+      encoding: UTF-8
+      string: '{"id":null,"name":"Antony"}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Location:
+      - http://localhost:3000/api/v0/providers/3db5e9e4-67ac-4d23-beae-da7f0100b9bd
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"7abbe2a6d503d3aa602dd4e12cb956b7"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - a74049d1-2ab8-410c-909c-a040a5c94385
+      X-Runtime:
+      - '0.306866'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"3db5e9e4-67ac-4d23-beae-da7f0100b9bd","name":"Antony","lock_version":0,"created_at":"2015-08-10T03:11:16.530Z","updated_at":"2015-08-10T03:11:16.530Z"}'
+    http_version: 
+  recorded_at: Mon, 10 Aug 2015 03:11:16 GMT
+recorded_with: VCR 2.9.3

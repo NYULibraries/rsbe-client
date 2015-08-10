@@ -45,4 +45,24 @@ describe Rsbe::Client::Provider do
       end
     end
   end
+
+  describe "#save" do
+    context "when creating a new Provider" do
+      context "with valid attributes" do
+        context "and no id", vcr: {cassette_name: 'provider/save-create-unknown-id'} do
+          let(:provider) { Rsbe::Client::Provider.new(name: 'Antony') }
+          subject { provider }
+          its(:save) { should eq true }
+
+          context "after save" do
+            before { provider.save }
+            its(:id)         { should_not be_nil  }
+            its(:name)       { should eq 'Antony' }
+            its(:created_at) { should_not be_nil  }
+            its(:updated_at) { should_not be_nil  }
+          end
+        end
+      end
+    end
+  end
 end
