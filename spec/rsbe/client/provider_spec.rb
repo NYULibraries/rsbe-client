@@ -12,4 +12,8 @@ describe Rsbe::Client::Provider do
       end
     end
   end
+  describe ".base_path" do
+    subject { Rsbe::Client::Provider }
+    its(:base_path) { should eq '/api/v0/providers' }
+  end
 end
