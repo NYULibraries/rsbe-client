@@ -29,4 +29,20 @@ describe Rsbe::Client::Provider do
       it { should be_a(Rsbe::Client::Provider) }
     end
   end
+
+  describe ".find" do
+    context "with id of existing Provider", vcr: {cassette_name: 'provider/find-existing'} do
+      subject { Rsbe::Client::Provider.find('0938b200-e388-4626-bee8-69b3fc73ecdb') }
+      its(:class) { should eq Rsbe::Client::Provider }
+      its(:id)    { should eq '0938b200-e388-4626-bee8-69b3fc73ecdb' }
+      its(:name)  { should eq 'Portia' }
+    end
+
+    context "with non-existant id", vcr: {cassette_name: 'provider/find-non_existent'} do
+      subject { Rsbe::Client::Provider.find('bad45d46-a14a-489f-97ac-384afb552a13') }
+      it 'should raise an Rsbe::Client::RecordNotFound' do
+        expect { subject }.to raise_error Rsbe::Client::RecordNotFound
+      end
+    end
+  end
 end
