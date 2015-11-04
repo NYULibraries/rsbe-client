@@ -1,9 +1,23 @@
 describe Rsbe::Client::Partner do
 
   describe ".new" do
-    context "with valid attributes" do
+    context "with valid attributes and symbol keys" do
       subject { Rsbe::Client::Partner.new(code: 'foo', rel_path: 'f/o/o') }
       it { should be_a(Rsbe::Client::Partner) }
+      its(:code)     { should eq 'foo' }
+      its(:rel_path) { should eq 'f/o/o' }
+    end
+    context "with valid attributes and string keys" do
+      subject { Rsbe::Client::Partner.new('code' => 'foo', 'rel_path' => 'f/o/o') }
+      it { should be_a(Rsbe::Client::Partner) }
+      its(:code)     { should eq 'foo' }
+      its(:rel_path) { should eq 'f/o/o' }
+    end
+    context "with incorrect argument type" do
+      subject { Rsbe::Client::Partner.new(42) }
+      it 'should raise an ArgumentError' do
+        expect { subject }.to raise_error ArgumentError
+      end
     end
     context "with incorrect argument type" do
       subject { Rsbe::Client::Partner.new(42) }
