@@ -36,7 +36,7 @@ module Rsbe
         @response = nil
 
         # initialize local hash with incoming values, restrict to RW attrs
-        self.class.rw_attrs.each {|x| @hash[x] = vals[x]}
+        self.class.rw_attrs.each { |x| @hash[x] = (vals[x] || vals[x.to_s]) }
       end
       def create_path
         raise "partner_id not initialized!" unless partner_id
