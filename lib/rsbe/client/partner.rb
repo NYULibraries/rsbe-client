@@ -46,7 +46,7 @@ module Rsbe
       def collections
         fail 'Error getting collections' unless get_children('colls')
         JSON.parse(@response.body).collect do |json_hash|
-          Rsbe::Client::Collection.find(json_hash['id'])
+          Rsbe::Client::Collection.new(json_hash)
         end
       end
     end
