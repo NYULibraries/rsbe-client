@@ -2,9 +2,11 @@ require 'active_support'
 
 module Rsbe
   module Client
+    # Class simplifies interaction with RSBE Partner resources
     class Collection < Base
       def self.all
-        raise Rsbe::Client::MethodNotImplementedError.new("Method not supported. Access via Rsbe::Client::Partner#collections")
+        emsg = 'Method not supported. Access via Rsbe::Client::Partner#collections'
+        fail Rsbe::Client::MethodNotImplementedError, emsg
       end
 
       def self.base_path
@@ -20,17 +22,17 @@ module Rsbe
       end
 
       def self.all_attrs
-        self.rw_attrs + self.ro_attrs
+        rw_attrs + ro_attrs
       end
 
       # define setter methods for RW attributes
-      self.rw_attrs.each  {|m| define_method("#{m}=") {|v| @hash[m] = v}}
+      rw_attrs.each  { |m| define_method("#{m}=") { |v| @hash[m] = v } }
 
       # define getter methods for ALL attributes
-      self.all_attrs.each {|m| define_method("#{m}")  { @hash[m]}}
+      all_attrs.each { |m| define_method("#{m}")  { @hash[m] } }
 
       def initialize(vals = {})
-        raise ArgumentError.new("Constructor requires a Hash") unless vals.is_a?(Hash)
+        fail(ArgumentError, 'Constructor requires a Hash') unless vals.is_a?(Hash)
         super()
         @hash = {}
         @response = nil
@@ -38,8 +40,9 @@ module Rsbe
         # initialize local hash with incoming values, restrict to RW attrs
         self.class.rw_attrs.each { |x| @hash[x] = (vals[x] || vals[x.to_s]) }
       end
+
       def create_path
-        raise "partner_id not initialized!" unless partner_id
+        fail 'partner_id not initialized!' unless partner_id
         Rsbe::Client::Partner.item_path(partner_id)
       end
     end
