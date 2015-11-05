@@ -1,9 +1,16 @@
 describe Rsbe::Client::Provider do
 
   describe ".new" do
-    context "with valid attributes" do
-      subject { Rsbe::Client::Provider.new(code: 'foo', rel_path: 'f/o/o') }
+    let(:provider_name) { 'James T. Kirk' }
+    context "with valid attributes and symbol keys" do
+      subject { Rsbe::Client::Provider.new(name: provider_name) }
       it { should be_a(Rsbe::Client::Provider) }
+      its(:name) { should eq provider_name }
+    end
+    context "with valid attributes and string keys" do
+      subject { Rsbe::Client::Provider.new('name' => provider_name) }
+      it { should be_a(Rsbe::Client::Provider) }
+      its(:name) { should eq provider_name }
     end
     context "with incorrect argument type" do
       subject { Rsbe::Client::Provider.new(42) }
