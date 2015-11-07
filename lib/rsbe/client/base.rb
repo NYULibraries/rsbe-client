@@ -74,9 +74,25 @@ module Rsbe
         update_hash(response_hash)
       end
 
+      def update_hash_nils_from_response
+        raise "@response not initialized" if @response.nil?
+
+        # update attributes with those from server
+        response_hash = JSON.parse(@response.body)
+        raise "unable to parse response to hash" unless response_hash.is_a?(Hash)
+        update_hash_nils(response_hash)
+      end
+
       def update_hash(arg)
         # update object state
-        self.class.all_attrs.each {|k| @hash[k] = arg[k.to_s] if arg[k.to_s] }
+        self.class.all_attrs.each { |k| (@hash[k] = arg[k.to_s]) if arg.has_key?(k.to_s) }
+      end
+
+      def update_hash_nils(arg)
+        # update object state
+        self.class.all_attrs.each do |k|
+          (@hash[k] = arg[k.to_s]) if @hash[k].nil?
+        end
       end
 
       def update
