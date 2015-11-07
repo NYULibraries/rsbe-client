@@ -31,7 +31,16 @@ module Rsbe
       rw_attrs.each { |m| define_method("#{m}=") {|v| @hash[m] = v} }
 
       # define getter methods for ALL attributes
-      all_attrs.each { |m| define_method("#{m}")  { @hash[m]} }
+      # all_attrs.each { |m| define_method("#{m}")  { @hash[m]} }
+      all_attrs.each do |m|
+        define_method("#{m}")  do
+          @hash[m] || begin
+                        get
+                        update_hash_nils_from_response
+                        @hash[m]
+                      end
+        end
+      end
 
       def initialize(vals = {})
         fail(ArgumentError, 'Constructor requires a Hash') unless vals.is_a?(Hash)

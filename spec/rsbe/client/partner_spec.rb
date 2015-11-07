@@ -30,7 +30,7 @@ describe Rsbe::Client::Partner do
     subject { Rsbe::Client::Partner }
     its(:base_path) { should eq '/api/v0/partners' }
   end
-  describe ".all", vcr: {cassette_name: 'partner/all'} do
+  describe ".all", vcr: { cassette_name: 'partner/all' } do
     context "returned array" do
       subject { Rsbe::Client::Partner.all }
       it         { should be_a(Array) }
@@ -43,14 +43,14 @@ describe Rsbe::Client::Partner do
   end
 
   describe ".find" do
-    context "with id of existing Partner", vcr: {cassette_name: 'partner/find-existing'} do
+    context "with id of existing Partner", vcr: { cassette_name: 'partner/find-existing' } do
       subject { Rsbe::Client::Partner.find('b110731f-86af-4534-8e58-6d219dcb1c52') }
       its(:class) { should eq Rsbe::Client::Partner }
       its(:id)    { should eq 'b110731f-86af-4534-8e58-6d219dcb1c52' }
       its(:code)  { should eq 'quux' }
     end
 
-    context "with non-existant id", vcr: {cassette_name: 'partner/find-non_existent'} do
+    context "with non-existant id", vcr: { cassette_name: 'partner/find-non_existent' } do
       subject { Rsbe::Client::Partner.find('bad45d46-a14a-489f-97ac-384afb552a13') }
       it 'should raise an Rsbe::Client::RecordNotFound' do
         expect { subject }.to raise_error Rsbe::Client::RecordNotFound
@@ -61,7 +61,7 @@ describe Rsbe::Client::Partner do
   describe "#save" do
     context "when creating a new Partner" do
       context "with valid attributes" do
-        context "and no id", vcr: {cassette_name: 'partner/save-create-unknown-id'} do
+        context "and no id", vcr: { cassette_name: 'partner/save-create-unknown-id' } do
           let(:partner) { Rsbe::Client::Partner.new(code: 'foo', rel_path: 'f/o/o') }
           subject { partner }
           its(:save) { should eq true }
@@ -147,6 +147,19 @@ describe Rsbe::Client::Partner do
       it "should return an Array of Collections" do
         expect(collections).to be_instance_of Array
         expect(collections.length).to eq 0
+      end
+    end
+  end
+  describe "lazy evaluation" do
+    context "when Partner exists, but is populated with minimal attributes" do
+      let(:partner) { Rsbe::Client::Partner.new(id: 'b051f936-835c-4abb-9034-efa7508db4bf') }
+      it "should return values for all attributes" do
+        expect(partner.code).to eq 'onyx'
+        expect(partner.name).to eq 'The Black Onyx Syndicate'
+        expect(partner.rel_path).to eq 'o/n/y/x'
+        expect(partner.lock_version).not_to be_nil
+        expect(partner.created_at).not_to be_nil
+        expect(partner.updated_at).not_to be_nil
       end
     end
   end
