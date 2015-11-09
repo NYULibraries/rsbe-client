@@ -15,7 +15,6 @@ module Rsbe
         conn = Rsbe::Client::Connection.new
         local_response = conn.get base_path
         raise "Error retrieving partners" unless local_response.status == 200
-        # JSON.parse(local_response.body).collect {|json_hash| find_and_instantiate(json_hash['id'])}
         JSON.parse(local_response.body).collect { |json_hash| new(json_hash) }
       end
 
