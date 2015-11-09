@@ -1,22 +1,17 @@
 describe Rsbe::Client::Collection do
-  # class Coll < ActiveRecord::Base
-  #   belongs_to :partner
-  #   has_many   :fmds
-
-  #   validates :code,       presence: true, uniqueness: {scope: :partner_id}
-  #   validates :code,       format: { with: /\A[a-z\d\-_]+\z/,
-  #     message: 'invalid character in code' }
-  #   validates :partner_id, presence: true
-  #   validates :coll_type,  presence: true, inclusion:  {in: %w(origin virtual)}
-  #   validates :quota,      presence: true, numericality: { only_integer: true,
-  #     greater_than_or_equal_to: 0 }
-
-  # end
 
   describe ".new" do
-    context "with valid attributes" do
-      subject { Rsbe::Client::Collection.new(code: 'foo', rel_path: 'f/o/o') }
+    context "with valid attributes and symbol keys" do
+      subject { Rsbe::Client::Collection.new(code: 'boo', rel_path: 'b/o/o') }
       it { should be_a(Rsbe::Client::Collection) }
+      its(:code)     { should eq 'boo' }
+      its(:rel_path) { should eq 'b/o/o' }
+    end
+    context "with valid attributes and string keys" do
+      subject { Rsbe::Client::Collection.new('code' => 'boo', 'rel_path' => 'b/o/o') }
+      it { should be_a(Rsbe::Client::Collection) }
+      its(:code)     { should eq 'boo' }
+      its(:rel_path) { should eq 'b/o/o' }
     end
     context "with incorrect argument type" do
       subject { Rsbe::Client::Collection.new(42) }
@@ -142,6 +137,49 @@ describe Rsbe::Client::Collection do
             its(:updated_at) { should_not be_nil }
           end
         end
+      end
+    end
+  end
+  describe "lazy evaluation" do
+    context "when Collection exists, but is populated with minimal attributes" do
+      let(:collection) { Rsbe::Client::Collection.new(id: 'fc7455cf-3b20-494c-9b9e-17cae9e51fa1') }
+      it "should return values for all attributes" do
+        expect(collection.code).to eq 'zaap'
+        expect(collection.name).to eq 'Zoinks and Away, Potatoes!'
+        expect(collection.quota).to eq 500
+        expect(collection.coll_type).to eq 'origin'
+        expect(collection.lock_version).not_to be_nil
+        expect(collection.created_at).not_to be_nil
+        expect(collection.updated_at).not_to be_nil
+      end
+    end
+    context "when Collection does not exist in RSBE and does not have an id" do
+      let(:collection) { Rsbe::Client::Collection.new }
+      it "should return nil for all attributes" do
+        expect(collection.id).to be_nil
+        expect(collection.code).to be_nil
+        expect(collection.name).to be_nil
+        expect(collection.quota).to be_nil
+        expect(collection.coll_type).to be_nil
+        expect(collection.lock_version).to be_nil
+        expect(collection.created_at).to be_nil
+        expect(collection.updated_at).to be_nil
+      end
+    end
+    context "when Collection does not exist in RSBE but has an id" do
+      let(:collection) do
+        Rsbe::Client::Collection.new(id: '7c7afee8-c8be-43bf-8096-c03672aaf114',
+                                     code: 'flippers')
+      end
+      it "should return values for defined attributes" do
+        expect(collection.id).to eq '7c7afee8-c8be-43bf-8096-c03672aaf114'
+        expect(collection.code).to eq 'flippers'
+        expect(collection.name).to be_nil
+        expect(collection.quota).to be_nil
+        expect(collection.coll_type).to be_nil
+        expect(collection.lock_version).to be_nil
+        expect(collection.created_at).to be_nil
+        expect(collection.updated_at).to be_nil
       end
     end
   end

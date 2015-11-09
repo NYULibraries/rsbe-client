@@ -15,7 +15,7 @@ module Rsbe
         conn = Rsbe::Client::Connection.new
         local_response = conn.get base_path
         raise "Error retrieving partners" unless local_response.status == 200
-        JSON.parse(local_response.body).collect {|json_hash| find_and_instantiate(json_hash['id'])}
+        JSON.parse(local_response.body).collect { |json_hash| new(json_hash) }
       end
 
       def self.find_and_instantiate(id)
@@ -70,9 +70,28 @@ module Rsbe
         # update attributes with those from server
         response_hash = JSON.parse(@response.body)
         raise "unable to parse response to hash" unless response_hash.is_a?(Hash)
+        update_hash(response_hash)
+      end
 
+      def update_hash_nils_from_response
+        raise "@response not initialized" if @response.nil?
+
+        # update attributes with those from server
+        response_hash = JSON.parse(@response.body)
+        raise "unable to parse response to hash" unless response_hash.is_a?(Hash)
+        update_hash_nils(response_hash)
+      end
+
+      def update_hash(arg)
         # update object state
-        self.class.all_attrs.each {|k| @hash[k] = response_hash[k.to_s] if response_hash[k.to_s] }
+        self.class.all_attrs.each { |k| (@hash[k] = arg[k.to_s]) if arg.has_key?(k.to_s) }
+      end
+
+      def update_hash_nils(arg)
+        # update object state
+        self.class.all_attrs.each do |k|
+          (@hash[k] = arg[k.to_s]) if @hash[k].nil?
+        end
       end
 
       def update
