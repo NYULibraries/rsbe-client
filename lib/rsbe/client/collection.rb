@@ -29,7 +29,34 @@ module Rsbe
       rw_attrs.each  { |m| define_method("#{m}=") { |v| @hash[m] = v } }
 
       # define getter methods for ALL attributes
-      all_attrs.each { |m| define_method("#{m}")  { @hash[m] } }
+      all_attrs.each do |m|
+        define_method("#{m}")  do
+          @hash[m] || begin
+                        # only fetch if Partner has a known id
+                        if @hash[:id]
+                          # TODO: CLEAN THIS UP
+                          # This works currently because when a 404 is
+                          # returned there is nothing in the response
+                          # hash that matches the resource attributes,
+                          # but relying on this behavior seems very
+                          # brittle. Additionally, for every attribute
+                          # queried, a GET operation is performed.
+                          # Should store the object lifecycle state,
+                          # e.g.,
+                          # - new, no ID, no matching resource in RSBE: don't query RSBE
+                          # - new, ID assigned, but not yet    in RSBE: don't query RSBE
+                          # - existing, partially populated,
+                          #   not fully updated with RSBE values:             query RSBE
+                          # - existing, fully populated with data from RSBE
+                          # - existing, local modifications, not persisted to RSBE
+                          #
+                          get
+                          update_hash_nils_from_response
+                        end
+                        @hash[m]
+                      end
+        end
+      end
 
       def initialize(vals = {})
         fail(ArgumentError, 'Constructor requires a Hash') unless vals.is_a?(Hash)

@@ -140,4 +140,47 @@ describe Rsbe::Client::Collection do
       end
     end
   end
+  describe "lazy evaluation" do
+    context "when Collection exists, but is populated with minimal attributes" do
+      let(:collection) { Rsbe::Client::Collection.new(id: 'fc7455cf-3b20-494c-9b9e-17cae9e51fa1') }
+      it "should return values for all attributes" do
+        expect(collection.code).to eq 'zaap'
+        expect(collection.name).to eq 'Zoinks and Away, Potatoes!'
+        expect(collection.quota).to eq 500
+        expect(collection.coll_type).to eq 'origin'
+        expect(collection.lock_version).not_to be_nil
+        expect(collection.created_at).not_to be_nil
+        expect(collection.updated_at).not_to be_nil
+      end
+    end
+    context "when Collection does not exist in RSBE and does not have an id" do
+      let(:collection) { Rsbe::Client::Collection.new }
+      it "should return nil for all attributes" do
+        expect(collection.id).to be_nil
+        expect(collection.code).to be_nil
+        expect(collection.name).to be_nil
+        expect(collection.quota).to be_nil
+        expect(collection.coll_type).to be_nil
+        expect(collection.lock_version).to be_nil
+        expect(collection.created_at).to be_nil
+        expect(collection.updated_at).to be_nil
+      end
+    end
+    context "when Collection does not exist in RSBE but has an id" do
+      let(:collection) do
+        Rsbe::Client::Collection.new(id: '7c7afee8-c8be-43bf-8096-c03672aaf114',
+                                     code: 'flippers')
+      end
+      it "should return values for defined attributes" do
+        expect(collection.id).to eq '7c7afee8-c8be-43bf-8096-c03672aaf114'
+        expect(collection.code).to eq 'flippers'
+        expect(collection.name).to be_nil
+        expect(collection.quota).to be_nil
+        expect(collection.coll_type).to be_nil
+        expect(collection.lock_version).to be_nil
+        expect(collection.created_at).to be_nil
+        expect(collection.updated_at).to be_nil
+      end
+    end
+  end
 end
