@@ -37,6 +37,22 @@ module Rsbe
           @hash[m] || begin
                         # only fetch if Partner has a known id
                         if @hash[:id]
+                          # TODO: CLEAN THIS UP
+                          # This works currently because when a 404 is
+                          # returned there is nothing in the response
+                          # hash that matches the resource attributes,
+                          # but relying on this behavior seems very
+                          # brittle. Additionally, for every attribute
+                          # queried, a GET operation is performed.
+                          # Should store the object lifecycle state,
+                          # e.g.,
+                          # - new, no ID, no matching resource in RSBE: don't query RSBE
+                          # - new, ID assigned, but not yet    in RSBE: don't query RSBE
+                          # - existing, partially populated,
+                          #   not fully updated with RSBE values:             query RSBE
+                          # - existing, fully populated with data from RSBE
+                          # - existing, local modifications, not persisted to RSBE
+                          #
                           get
                           update_hash_nils_from_response
                         end
