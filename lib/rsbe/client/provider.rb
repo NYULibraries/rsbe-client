@@ -40,7 +40,7 @@ module Rsbe
         @response = nil
 
         # initialize local hash with incoming values, restrict to RW attrs
-        self.class.rw_attrs.each {|x| @hash[x] = vals[x]}
+        self.class.rw_attrs.each { |x| @hash[x] = (vals[x] || vals[x.to_s]) }
       end
     end
   end
