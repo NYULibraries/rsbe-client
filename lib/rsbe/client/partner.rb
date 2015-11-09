@@ -35,8 +35,11 @@ module Rsbe
       all_attrs.each do |m|
         define_method("#{m}")  do
           @hash[m] || begin
-                        get
-                        update_hash_nils_from_response
+                        # only fetch if Partner has a known id
+                        if @hash[:id]
+                          get
+                          update_hash_nils_from_response
+                        end
                         @hash[m]
                       end
         end

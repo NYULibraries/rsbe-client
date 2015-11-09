@@ -162,5 +162,27 @@ describe Rsbe::Client::Partner do
         expect(partner.updated_at).not_to be_nil
       end
     end
+    context "when Partner does not exist in RSBE and does not have an id" do
+      let(:partner) { Rsbe::Client::Partner.new }
+      it "should return values for all attributes" do
+        expect(partner.code).to be_nil
+        expect(partner.name).to be_nil
+        expect(partner.rel_path).to be_nil
+        expect(partner.lock_version).to be_nil
+        expect(partner.created_at).to be_nil
+        expect(partner.updated_at).to be_nil
+      end
+    end
+    pending "when Partner does not exist in RSBE but has an id" do
+      let(:partner) { Rsbe::Client::Partner.new(id: '7c7afee8-c8be-43bf-8096-c03672aaf114') }
+      it "should return values for all attributes" do
+        expect(partner.code).to eq 'onyx'
+        expect(partner.name).to eq 'The Black Onyx Syndicate'
+        expect(partner.rel_path).to eq 'o/n/y/x'
+        expect(partner.lock_version).not_to be_nil
+        expect(partner.created_at).not_to be_nil
+        expect(partner.updated_at).not_to be_nil
+      end
+    end
   end
 end
