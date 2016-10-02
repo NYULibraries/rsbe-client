@@ -19,12 +19,6 @@ describe Rsbe::Client::Partner do
         expect { subject }.to raise_error ArgumentError
       end
     end
-    context "with incorrect argument type" do
-      subject { Rsbe::Client::Partner.new(42) }
-      it 'should raise an ArgumentError' do
-        expect { subject }.to raise_error ArgumentError
-      end
-    end
   end
   describe ".base_path" do
     subject { Rsbe::Client::Partner }
