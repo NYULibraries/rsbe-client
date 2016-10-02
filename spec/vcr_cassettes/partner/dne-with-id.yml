@@ -1,0 +1,238 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/7c7afee8-c8be-43bf-8096-c03672aaf114
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - af9559be-91de-422e-abef-0ba445feb29e
+      X-Runtime:
+      - '0.912813'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"Couldn''t find Partner with id=7c7afee8-c8be-43bf-8096-c03672aaf114"}'
+    http_version: 
+  recorded_at: Sun, 02 Oct 2016 00:37:30 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/7c7afee8-c8be-43bf-8096-c03672aaf114
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 9e9cfe12-d0a0-4e82-a0aa-4b710eb78df8
+      X-Runtime:
+      - '0.008763'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"Couldn''t find Partner with id=7c7afee8-c8be-43bf-8096-c03672aaf114"}'
+    http_version: 
+  recorded_at: Sun, 02 Oct 2016 00:37:30 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/7c7afee8-c8be-43bf-8096-c03672aaf114
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - c4f57e05-f301-4de3-9846-6fb98ea32597
+      X-Runtime:
+      - '0.007280'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"Couldn''t find Partner with id=7c7afee8-c8be-43bf-8096-c03672aaf114"}'
+    http_version: 
+  recorded_at: Sun, 02 Oct 2016 00:37:30 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/7c7afee8-c8be-43bf-8096-c03672aaf114
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 8cdacfc1-af21-4781-9846-8faf89eab2ad
+      X-Runtime:
+      - '0.007360'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"Couldn''t find Partner with id=7c7afee8-c8be-43bf-8096-c03672aaf114"}'
+    http_version: 
+  recorded_at: Sun, 02 Oct 2016 00:37:30 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/partners/7c7afee8-c8be-43bf-8096-c03672aaf114
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 1bedeb5f-04fa-4cbf-85be-5a3200a200e1
+      X-Runtime:
+      - '0.008280'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"Couldn''t find Partner with id=7c7afee8-c8be-43bf-8096-c03672aaf114"}'
+    http_version: 
+  recorded_at: Sun, 02 Oct 2016 00:37:30 GMT
+recorded_with: VCR 2.9.3
