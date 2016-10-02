@@ -1,0 +1,285 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/colls/7c7afee8-c8be-43bf-8096-c03672aaf114
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 35bdf634-252e-4746-b6d9-5befb0e24f26
+      X-Runtime:
+      - '0.009585'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"Couldn''t find Coll with id=7c7afee8-c8be-43bf-8096-c03672aaf114"}'
+    http_version: 
+  recorded_at: Sun, 02 Oct 2016 00:50:59 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/colls/7c7afee8-c8be-43bf-8096-c03672aaf114
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - b5594af6-56ac-411a-add0-95f280d35505
+      X-Runtime:
+      - '0.010523'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"Couldn''t find Coll with id=7c7afee8-c8be-43bf-8096-c03672aaf114"}'
+    http_version: 
+  recorded_at: Sun, 02 Oct 2016 00:50:59 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/colls/7c7afee8-c8be-43bf-8096-c03672aaf114
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 3802e194-d60f-4142-aa70-1893ecfb5a55
+      X-Runtime:
+      - '0.043454'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"Couldn''t find Coll with id=7c7afee8-c8be-43bf-8096-c03672aaf114"}'
+    http_version: 
+  recorded_at: Sun, 02 Oct 2016 00:50:59 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/colls/7c7afee8-c8be-43bf-8096-c03672aaf114
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - d801db49-b39e-4a3d-941e-d300b12a9e1f
+      X-Runtime:
+      - '0.010425'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"Couldn''t find Coll with id=7c7afee8-c8be-43bf-8096-c03672aaf114"}'
+    http_version: 
+  recorded_at: Sun, 02 Oct 2016 00:50:59 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/colls/7c7afee8-c8be-43bf-8096-c03672aaf114
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 461ebcb2-0ffb-45c8-85fb-75d8d8e6c171
+      X-Runtime:
+      - '0.008864'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"Couldn''t find Coll with id=7c7afee8-c8be-43bf-8096-c03672aaf114"}'
+    http_version: 
+  recorded_at: Sun, 02 Oct 2016 00:50:59 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/colls/7c7afee8-c8be-43bf-8096-c03672aaf114
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - b48bcf48-ecac-403a-b937-d82139775fcc
+      X-Runtime:
+      - '0.007596'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"Couldn''t find Coll with id=7c7afee8-c8be-43bf-8096-c03672aaf114"}'
+    http_version: 
+  recorded_at: Sun, 02 Oct 2016 00:50:59 GMT
+recorded_with: VCR 2.9.3
