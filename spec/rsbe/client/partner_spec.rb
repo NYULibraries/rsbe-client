@@ -19,12 +19,6 @@ describe Rsbe::Client::Partner do
         expect { subject }.to raise_error ArgumentError
       end
     end
-    context "with incorrect argument type" do
-      subject { Rsbe::Client::Partner.new(42) }
-      it 'should raise an ArgumentError' do
-        expect { subject }.to raise_error ArgumentError
-      end
-    end
   end
   describe ".base_path" do
     subject { Rsbe::Client::Partner }
@@ -151,7 +145,7 @@ describe Rsbe::Client::Partner do
     end
   end
   describe "lazy evaluation" do
-    context "when Partner exists, but is populated with minimal attributes" do
+    context "when Partner exists, but is populated with minimal attributes",  vcr: {cassette_name: 'partner/lazy-eval-exists'} do
       let(:partner) { Rsbe::Client::Partner.new(id: 'b051f936-835c-4abb-9034-efa7508db4bf') }
       it "should return values for all attributes" do
         expect(partner.code).to eq 'onyx'
@@ -178,7 +172,7 @@ describe Rsbe::Client::Partner do
         Rsbe::Client::Partner.new(id: '7c7afee8-c8be-43bf-8096-c03672aaf114',
                                   code: 'topaz')
       end
-      it "should return values for defined attributes" do
+      it "should return values for defined attributes", vcr: {cassette_name: 'partner/dne-with-id'} do
         expect(partner.code).to eq 'topaz'
         expect(partner.name).to be_nil
         expect(partner.rel_path).to be_nil

@@ -41,7 +41,7 @@ describe Rsbe::Client::Collection do
       its(:code)  { should eq 'zaap' }
     end
 
-    context "with non-existant id", vcr: {cassette_name: 'collection/find-non_existent'} do
+    context "with non-existent id", vcr: {cassette_name: 'collection/find-non_existent'} do
       subject { Rsbe::Client::Collection.find('bad45d46-a14a-489f-97ac-384afb552a13') }
       it 'should raise an Rsbe::Client::RecordNotFound' do
         expect { subject }.to raise_error Rsbe::Client::RecordNotFound
@@ -141,7 +141,7 @@ describe Rsbe::Client::Collection do
     end
   end
   describe "lazy evaluation" do
-    context "when Collection exists, but is populated with minimal attributes" do
+    context "when Collection exists, but is populated with minimal attributes", vcr: {cassette_name: 'collection/lazy-eval-exists'} do
       let(:collection) { Rsbe::Client::Collection.new(id: 'fc7455cf-3b20-494c-9b9e-17cae9e51fa1') }
       it "should return values for all attributes" do
         expect(collection.code).to eq 'zaap'
@@ -166,7 +166,7 @@ describe Rsbe::Client::Collection do
         expect(collection.updated_at).to be_nil
       end
     end
-    context "when Collection does not exist in RSBE but has an id" do
+    context "when Collection does not exist in RSBE but has an id", vcr: {cassette_name: 'collection/lazy-eval-dne'} do
       let(:collection) do
         Rsbe::Client::Collection.new(id: '7c7afee8-c8be-43bf-8096-c03672aaf114',
                                      code: 'flippers')

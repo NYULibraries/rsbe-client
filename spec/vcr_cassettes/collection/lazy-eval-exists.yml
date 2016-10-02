@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/colls/fc7455cf-3b20-494c-9b9e-17cae9e51fa1
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"0b08e939ec30068fe00bd00b48b84822"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 4fc961f1-a950-4a82-b48b-b3eb0dafd5a9
+      X-Runtime:
+      - '2.243353'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"fc7455cf-3b20-494c-9b9e-17cae9e51fa1","partner_id":"b110731f-86af-4534-8e58-6d219dcb1c52","code":"zaap","name":"Zoinks
+        and Away, Potatoes!","coll_type":"origin","created_at":"2014-11-07T14:50:23.745Z","updated_at":"2014-11-07T14:50:23.745Z","quota":500,"ready_for_content":false,"partner_url":"http://localhost:3000/api/v0/partners/b110731f-86af-4534-8e58-6d219dcb1c52","lock_version":0,"rel_path":null}'
+    http_version: 
+  recorded_at: Sun, 02 Oct 2016 00:50:59 GMT
+recorded_with: VCR 2.9.3
