@@ -49,22 +49,14 @@ irb> Partner.all.each {|p| puts p.id}
 ```
 ...
 def select_item_or_exit(items, label)
-  print_menu_header(label)
-  print_items(items)
-  print_menu_footer(label)
-  idx = selection_index_from_user
-  err_exit("invalid selection...\nGoodbye...") if idx < 0 || idx > items.length
-  ok_exit('Goodbye...') if idx == 0
-  items[idx - 1]
+  # do some stuff
 end
-#------------------------------------------------------------------------------
-# MAIN ROUTINE
-#------------------------------------------------------------------------------
-print_header
-err_exit('NEED AT LEAST 1 DIRECTORY') if ARGV.length < 1
+...
+
 partners = Rsbe::Client::Partner.all
 partners.sort! { |a, b| a.code <=> b.code }
 partner = select_item_or_exit(partners, 'partner')
+
 collections = partner.collections.sort { |a, b| a.code <=> b.code }
 collection = select_item_or_exit(collections, 'collection')
 puts "collection: #{collection.code}, #{collection.name} #{collection.id}"
