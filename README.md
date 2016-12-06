@@ -43,17 +43,6 @@ irb> Partner.all.each {|p| puts p.id}
 51213be7-c8de-4e06-8cc2-06bfc82cdd68
 977e659b-886a-4626-8799-8979426ad2b3
 ...
-
-irb> p = Partner.new
-...
-irb> p.code = 'quux'
- => "quux"
-irb> p.name = 'Quasi-interesting Ferrets!'
- => "Quasi-interesting Ferrets!"
-irb> p.rel_path = 'a/b/c'
- => "a/b/c"
-irb> p.save
- => true
 ```
 
 #### Usage (code example)
@@ -82,13 +71,7 @@ puts "collection: #{collection.code}, #{collection.name} #{collection.id}"
 ...
 ```
 
-
-```
 #### Methods:
-```
-Rsbe::Partner.new(params = {})
-```
-
 ```
 Rsbe::Partner#save
 Rsbe::Partner#code
