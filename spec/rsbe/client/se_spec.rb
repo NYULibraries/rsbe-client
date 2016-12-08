@@ -42,7 +42,7 @@ describe Rsbe::Client::Collection do
     end
 
     context "with non-existent id", vcr: {cassette_name: 'se/find-non_existent'} do
-      subject { Rsbe::Client::Collection.find('baddoh-a14a-489f-97ac-384afb552a13') }
+      subject { Rsbe::Client::Se.find('443d3d42-1084-4045-b618-f4358d6e8b12') }
       it 'should raise an Rsbe::Client::RecordNotFound' do
         expect { subject }.to raise_error Rsbe::Client::RecordNotFound
       end
