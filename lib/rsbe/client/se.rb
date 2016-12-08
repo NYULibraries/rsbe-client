@@ -3,7 +3,11 @@ require 'active_support'
 module Rsbe
   module Client
     class Se < Base
-
+      def self.all
+        emsg = 'Method not supported. Access via Rsbe::Client::Partner#collections'
+        fail Rsbe::Client::MethodNotImplementedError, emsg
+      end
+      
       def self.base_path
         super + '/ses'
       end

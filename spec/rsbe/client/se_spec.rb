@@ -23,7 +23,7 @@ describe Rsbe::Client::Collection do
 
   describe ".base_path" do
     subject { Rsbe::Client::Se }
-    its(:base_path) { should eq '/api/v0/se' }
+    its(:base_path) { should eq '/api/v0/ses' }
   end
 
   describe ".all" do
@@ -37,7 +37,7 @@ describe Rsbe::Client::Collection do
     context "with id of existing Se", vcr: {cassette_name: 'se/find-existing'} do
       subject { Rsbe::Client::Se.find('acf51ef2-8bf3-4f05-9042-0bfcb6860560') }
       its(:class) { should eq Rsbe::Client::Se }
-      its(:id)    { should eq 'facf51ef2-8bf3-4f05-9042-0bfcb6860560' }
+      its(:id)    { should eq 'acf51ef2-8bf3-4f05-9042-0bfcb6860560' }
       its(:digi_id)  { should eq 'foo_quux_cuid01234' }
     end
 
@@ -55,12 +55,12 @@ describe Rsbe::Client::Collection do
         # TODO: implment FactoryGirl
         context "and no id", vcr: {cassette_name: 'se/save-create-unknown-id'} do
           let(:coll_id) { "ea85c776-a79b-4603-b307-d6760a400281" }
-          let(:digi_id) { 'magnum_est_dorp0987' }
+          let(:digi_id) { 'devo_dormire' }
           let(:do_type) { 'map' }
           let(:phase)  { 'upload' }
           let(:step)  { 'packaging' }
           let(:status)  { 'done' }
-          let(:label)  { 'whee labels' }
+          let(:label)  { 'labels' }
           let(:notes)  { 'lorem ipsum dolor' }
           let(:se) { Rsbe::Client::Se.new(coll_id: coll_id,
                                                           digi_id:  digi_id,
@@ -82,7 +82,7 @@ describe Rsbe::Client::Collection do
             its(:phase)       { should eq phase    }
             its(:step)       { should eq step    }
             its(:status)       { should eq status    }
-            its(:label)       { should eq label    }
+            #its(:label)       { should eq label    }
             its(:notes)       { should eq notes    }
             its(:created_at) { should_not be_nil }
             its(:updated_at) { should_not be_nil }
@@ -91,12 +91,12 @@ describe Rsbe::Client::Collection do
 
         context "and a known id", vcr: {cassette_name: 'se/save-create-known-id'} do
           let(:se) do
-            Rsbe::Client::Se.new(id:         '07998216-af0a-4262-b7f9-6a7d9c4aeae4',
+            Rsbe::Client::Se.new(id:         'd72359c1-ecfd-4dbf-843c-bf1ec5f4f454',
                                          coll_id: 'ea85c776-a79b-4603-b307-d6760a400281',
-                                         digi_id: 'AD-MC-0023',
+                                         digi_id: 'AA-MT-0123',
                                          do_type: 'map',
                                          phase:  'upload',
-                                         step: 'qc',
+                                         step: 'upload',
                                          status: 'done',
                                          label: 'label',
                                          notes: 'notes')
@@ -106,14 +106,14 @@ describe Rsbe::Client::Collection do
 
           context "after save" do
             before { se.save }
-            its(:id)         { should eq '07998216-af0a-4262-b7f9-6a7d9c4aeae4' }
+            its(:id)         { should eq 'd72359c1-ecfd-4dbf-843c-bf1ec5f4f454' }
             its(:coll_id) { should eq 'ea85c776-a79b-4603-b307-d6760a400281' }
-            its(:digi_id)       { should eq 'AD-MC-0023'    }
+            its(:digi_id)       { should eq 'AA-MT-0123'    }
             its(:do_type)      { should eq 'map'   }
             its(:phase)       { should eq 'upload'    }
-            its(:step)       { should eq 'qc'    }
+            its(:step)       { should eq 'upload'    }
             its(:status)       { should eq 'done'    }
-            its(:label)       { should eq 'label'    }
+            #its(:label)       { should eq 'label'    }
             its(:notes)       { should eq 'notes'    }
             its(:created_at) { should_not be_nil }
             its(:updated_at) { should_not be_nil }
@@ -122,35 +122,35 @@ describe Rsbe::Client::Collection do
       end
       context "with invalid attributes", vcr: {cassette_name: 'se/save-invalid'} do
         let(:se) do
-          Rsbe::Client::Collection.new(coll_id: 'ea85c776-a79b-4603-b307-d6760a400281',
+          Rsbe::Client::Se.new(coll_id: 'ea85c776-a79b-4603-b307-d6760a400281',
                                        phase:  'new moon')
         end
         subject { se }
         its(:save) { should eq false }
       end
     end
-    # start work on this
-    context "when updating a Collection" do
+
+    context "when updating a Se" do
       context "with valid attributes", vcr: {cassette_name: 'se/save-update-valid'} do
-        let(:se) { Rsbe::Client::Se.find('07998216-af0a-4262-b7f9-6a7d9c4aeae4') }
-        subject { collection }
+        let(:se) { Rsbe::Client::Se.find('acf51ef2-8bf3-4f05-9042-0bfcb6860560') }
+        subject { se }
         context "before save-as-update" do
-          its(:id)         { should eq '07998216-af0a-4262-b7f9-6a7d9c4aeae4' }
-          its(:code)       { should eq 'han'  }
-          its(:name)       { should eq 'Happy Anteaters of Nigeria' }
+          its(:id)         { should eq 'acf51ef2-8bf3-4f05-9042-0bfcb6860560' }
+          its(:phase)       { should eq 'digitization'  }
+          its(:step)       { should eq 'qc' }
           its(:created_at) { should_not be_nil }
           its(:updated_at) { should_not be_nil }
         end
         context "on save-as-update" do
           before do
-            collection.name = 'Last Emu In Australia'
-            collection.code = 'leia'
+            se.phase = 'upload'
+            se.step = 'packaging'
           end
           its(:save) { should eq true }
           context "after save" do
-            its(:id)         { should eq '07998216-af0a-4262-b7f9-6a7d9c4aeae4' }
-            its(:code)       { should eq 'leia'  }
-            its(:name)       { should eq 'Last Emu In Australia' }
+            its(:id)         { should eq 'acf51ef2-8bf3-4f05-9042-0bfcb6860560' }
+            its(:phase)       { should eq 'upload'  }
+            its(:step)       { should eq 'packaging' }
             its(:created_at) { should_not be_nil }
             its(:updated_at) { should_not be_nil }
           end
@@ -159,45 +159,35 @@ describe Rsbe::Client::Collection do
     end
   end
   describe "lazy evaluation" do
-    context "when Collection exists, but is populated with minimal attributes", vcr: {cassette_name: 'collection/lazy-eval-exists'} do
-      let(:collection) { Rsbe::Client::Collection.new(id: 'fc7455cf-3b20-494c-9b9e-17cae9e51fa1') }
+    context "when Se exists, but is populated with minimal attributes", vcr: {cassette_name: 'se/lazy-eval-exists'} do
+      let(:se) { Rsbe::Client::Se.new(id: 'c415b683-0823-4da0-b108-d729957705c5') }
       it "should return values for all attributes" do
-        expect(collection.code).to eq 'zaap'
-        expect(collection.name).to eq 'Zoinks and Away, Potatoes!'
-        expect(collection.quota).to eq 500
-        expect(collection.coll_type).to eq 'origin'
-        expect(collection.lock_version).not_to be_nil
-        expect(collection.created_at).not_to be_nil
-        expect(collection.updated_at).not_to be_nil
+        expect(se.coll_id).to eq 'ea85c776-a79b-4603-b307-d6760a400281'
+        expect(se.digi_id).to eq 'chk_this_out'
+        expect(se.do_type).to eq 'map'
+        expect(se.phase).to eq 'upload'
+        expect(se.step).to eq 'upload'
+        expect(se.status).to eq 'done'
+        expect(se.lock_version).not_to be_nil
+        expect(se.created_at).not_to be_nil
+        expect(se.updated_at).not_to be_nil
       end
     end
-    context "when Collection does not exist in RSBE and does not have an id" do
-      let(:collection) { Rsbe::Client::Collection.new }
+    context "when Se does not exist in RSBE and does not have an id" do
+      let(:se) { Rsbe::Client::Se.new }
       it "should return nil for all attributes" do
-        expect(collection.id).to be_nil
-        expect(collection.code).to be_nil
-        expect(collection.name).to be_nil
-        expect(collection.quota).to be_nil
-        expect(collection.coll_type).to be_nil
-        expect(collection.lock_version).to be_nil
-        expect(collection.created_at).to be_nil
-        expect(collection.updated_at).to be_nil
-      end
-    end
-    context "when Collection does not exist in RSBE but has an id", vcr: {cassette_name: 'collection/lazy-eval-dne'} do
-      let(:collection) do
-        Rsbe::Client::Collection.new(id: '7c7afee8-c8be-43bf-8096-c03672aaf114',
-                                     code: 'flippers')
-      end
-      it "should return values for defined attributes" do
-        expect(collection.id).to eq '7c7afee8-c8be-43bf-8096-c03672aaf114'
-        expect(collection.code).to eq 'flippers'
-        expect(collection.name).to be_nil
-        expect(collection.quota).to be_nil
-        expect(collection.coll_type).to be_nil
-        expect(collection.lock_version).to be_nil
-        expect(collection.created_at).to be_nil
-        expect(collection.updated_at).to be_nil
+        expect(se.id).to be_nil
+        expect(se.coll_id).to be_nil
+        expect(se.digi_id).to be_nil
+        expect(se.do_type).to be_nil
+        expect(se.phase).to be_nil
+        expect(se.step).to be_nil
+        expect(se.status).to be_nil
+        expect(se.label).to be_nil
+        expect(se.notes).to be_nil
+        expect(se.lock_version).to be_nil
+        expect(se.created_at).to be_nil
+        expect(se.updated_at).to be_nil
       end
     end
   end

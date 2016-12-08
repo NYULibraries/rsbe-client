@@ -1,0 +1,101 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/ses/d72359c1-ecfd-4dbf-843c-bf1ec5f4f454
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 404
+      message: Not Found
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Cache-Control:
+      - no-cache
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 5ba3dd31-9dbd-4ffe-884d-e1c9c08dee04
+      X-Runtime:
+      - '0.008589'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"error":"Couldn''t find Se with id=d72359c1-ecfd-4dbf-843c-bf1ec5f4f454"}'
+    http_version: 
+  recorded_at: Thu, 08 Dec 2016 19:37:41 GMT
+- request:
+    method: post
+    uri: http://foo:bar@localhost:3000/api/v0/ses
+    body:
+      encoding: UTF-8
+      string: '{"id":"d72359c1-ecfd-4dbf-843c-bf1ec5f4f454","coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"AA-MT-0123","do_type":"map","phase":"upload","step":"upload","status":"done","label":"label","notes":"notes"}'
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Content-Type:
+      - application/json
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 201
+      message: Created
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      Location:
+      - http://localhost:3000/api/v0/ses/d72359c1-ecfd-4dbf-843c-bf1ec5f4f454
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"b189ed562b80591b06444eaba3f6d2ae"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      X-Request-Id:
+      - 545991a6-1897-4a9f-97ef-2d859288b77f
+      X-Runtime:
+      - '0.021154'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"d72359c1-ecfd-4dbf-843c-bf1ec5f4f454","coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"AA-MT-0123","do_type":"map","phase":"upload","step":"upload","status":"done","notes":"notes","lock_version":0,"created_at":"2016-12-08T19:37:41.292Z","updated_at":"2016-12-08T19:37:41.292Z","label":null}'
+    http_version: 
+  recorded_at: Thu, 08 Dec 2016 19:37:41 GMT
+recorded_with: VCR 2.9.3
