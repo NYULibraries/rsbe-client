@@ -55,7 +55,7 @@ describe Rsbe::Client::Collection do
         # TODO: implment FactoryGirl
         context "and no id", vcr: {cassette_name: 'se/save-create-unknown-id'} do
           let(:coll_id) { "ea85c776-a79b-4603-b307-d6760a400281" }
-          let(:digi_id) { 'devo_dormire' }
+          let(:digi_id) { 'posso_dormire' }
           let(:do_type) { 'map' }
           let(:phase)  { 'upload' }
           let(:step)  { 'packaging' }
@@ -82,7 +82,7 @@ describe Rsbe::Client::Collection do
             its(:phase)       { should eq phase    }
             its(:step)       { should eq step    }
             its(:status)       { should eq status    }
-            #its(:label)       { should eq label    }
+            its(:label)       { should eq label    }
             its(:notes)       { should eq notes    }
             its(:created_at) { should_not be_nil }
             its(:updated_at) { should_not be_nil }
@@ -93,7 +93,7 @@ describe Rsbe::Client::Collection do
           let(:se) do
             Rsbe::Client::Se.new(id:         'd72359c1-ecfd-4dbf-843c-bf1ec5f4f454',
                                          coll_id: 'ea85c776-a79b-4603-b307-d6760a400281',
-                                         digi_id: 'AA-MT-0123',
+                                         digi_id: 'AA-MX-0143',
                                          do_type: 'map',
                                          phase:  'upload',
                                          step: 'upload',
@@ -108,12 +108,12 @@ describe Rsbe::Client::Collection do
             before { se.save }
             its(:id)         { should eq 'd72359c1-ecfd-4dbf-843c-bf1ec5f4f454' }
             its(:coll_id) { should eq 'ea85c776-a79b-4603-b307-d6760a400281' }
-            its(:digi_id)       { should eq 'AA-MT-0123'    }
+            its(:digi_id)       { should eq 'AA-MX-0143'    }
             its(:do_type)      { should eq 'map'   }
             its(:phase)       { should eq 'upload'    }
             its(:step)       { should eq 'upload'    }
             its(:status)       { should eq 'done'    }
-            #its(:label)       { should eq 'label'    }
+            its(:label)       { should eq 'label'    }
             its(:notes)       { should eq 'notes'    }
             its(:created_at) { should_not be_nil }
             its(:updated_at) { should_not be_nil }

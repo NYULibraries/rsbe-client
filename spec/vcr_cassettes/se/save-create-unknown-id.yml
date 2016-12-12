@@ -5,7 +5,7 @@ http_interactions:
     uri: http://foo:bar@localhost:3000/api/v0/ses
     body:
       encoding: UTF-8
-      string: '{"id":null,"coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"devo_dormire","do_type":"map","phase":"upload","step":"packaging","status":"done","label":"labels","notes":"lorem
+      string: '{"id":null,"coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"posso_dormire","do_type":"map","phase":"upload","step":"packaging","status":"done","label":"labels","notes":"lorem
         ipsum dolor"}'
     headers:
       User-Agent:
@@ -32,25 +32,25 @@ http_interactions:
       Content-Type:
       - application/json; charset=utf-8
       Location:
-      - http://localhost:3000/api/v0/ses/68472925-c271-4643-b90a-ee2da34e8c69
+      - http://localhost:3000/api/v0/ses/6549aeb6-05e9-48a9-91dd-266afd4d53ed
       X-Meta-Request-Version:
       - 0.2.9
       Etag:
-      - '"7d14edae5c400495fdb366b70df7d28f"'
+      - '"4d17ce9a2105807b23fb36010cfd4a2d"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       X-Request-Id:
-      - b37b527c-48c4-49eb-b795-fcbc4185ec5b
+      - 560f04ef-d5d8-41f1-82a6-1db39c4ff79b
       X-Runtime:
-      - '0.018566'
+      - '0.120205'
       Connection:
       - close
       Server:
       - thin 1.6.2 codename Doc Brown
     body:
       encoding: UTF-8
-      string: '{"id":"68472925-c271-4643-b90a-ee2da34e8c69","coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"devo_dormire","do_type":"map","phase":"upload","step":"packaging","status":"done","notes":"lorem
-        ipsum dolor","lock_version":0,"created_at":"2016-12-08T19:29:45.720Z","updated_at":"2016-12-08T19:29:45.720Z","label":null}'
+      string: '{"id":"6549aeb6-05e9-48a9-91dd-266afd4d53ed","coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"posso_dormire","do_type":"map","phase":"upload","step":"packaging","status":"done","notes":"lorem
+        ipsum dolor","lock_version":0,"created_at":"2016-12-12T16:51:25.096Z","updated_at":"2016-12-12T16:51:25.096Z","label":"labels"}'
     http_version: 
-  recorded_at: Thu, 08 Dec 2016 19:29:45 GMT
+  recorded_at: Mon, 12 Dec 2016 16:51:26 GMT
 recorded_with: VCR 2.9.3
