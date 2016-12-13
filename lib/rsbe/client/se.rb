@@ -2,19 +2,25 @@ require 'active_support'
 
 module Rsbe
   module Client
-    # Class simplifies interaction with RSBE Partner resources
-    class Collection < Base
+    class Se < Base
       def self.all
         emsg = 'Method not supported. Access via Rsbe::Client::Partner#collections'
         fail Rsbe::Client::MethodNotImplementedError, emsg
       end
-
+      
       def self.base_path
-        super + '/colls'
+        super + '/ses'
       end
 
+      # implementation objectives:
+      # - expose attributes via standard setter/getter methods
+      # - create getters for  all Read-Only  (RO) attributes
+      # - create setters only for Read/Write (RW) attributes
+      # - use hash for internal representation to simplify passing
+      #   data back and forth to back end app
+
       def self.rw_attrs
-        [:id, :code, :partner_id, :coll_type, :quota, :name, :rel_path]
+        [:id, :coll_id, :digi_id, :do_type, :phase, :step, :status, :label, :notes]
       end
 
       def self.ro_attrs
@@ -22,17 +28,17 @@ module Rsbe
       end
 
       def self.all_attrs
-        rw_attrs + ro_attrs
+        self.rw_attrs + self.ro_attrs
       end
 
       # define setter methods for RW attributes
-      rw_attrs.each  { |m| define_method("#{m}=") { |v| @hash[m] = v } }
+      self.rw_attrs.each  {|m| define_method("#{m}=") {|v| @hash[m] = v}}
 
       # define getter methods for ALL attributes
       all_attrs.each do |m|
         define_method("#{m}")  do
           @hash[m] || begin
-                        # only fetch if Partner has a known id
+                        # only fetch if object has a known id
                         if @hash[:id]
                           # TODO: CLEAN THIS UP
                           # This works currently because when a 404 is
@@ -59,25 +65,13 @@ module Rsbe
       end
 
       def initialize(vals = {})
-        fail(ArgumentError, 'Constructor requires a Hash') unless vals.is_a?(Hash)
+        raise ArgumentError.new("Constructor requires a Hash") unless vals.is_a?(Hash)
         super()
         @hash = {}
         @response = nil
 
         # initialize local hash with incoming values, restrict to RW attrs
         self.class.rw_attrs.each { |x| @hash[x] = (vals[x] || vals[x.to_s]) }
-      end
-
-      def create_path
-        fail 'partner_id not initialized!' unless partner_id
-        Rsbe::Client::Partner.item_path(partner_id)
-      end
-
-      def ses
-        fail 'Error getting source entities' unless get_children('ses')
-        JSON.parse(@response.body).collect do |json_hash|
-          Rsbe::Client::Se.new(json_hash)
-        end
       end
     end
   end
