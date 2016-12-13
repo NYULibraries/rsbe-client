@@ -38,7 +38,7 @@ module Rsbe
       all_attrs.each do |m|
         define_method("#{m}")  do
           @hash[m] || begin
-                        # only fetch if Partner has a known id
+                        # only fetch if object has a known id
                         if @hash[:id]
                           # TODO: CLEAN THIS UP
                           # This works currently because when a 404 is

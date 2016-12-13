@@ -4,14 +4,14 @@ describe Rsbe::Client::Collection do
     context "with valid attributes and symbol keys" do
       subject { Rsbe::Client::Se.new(coll_id: 'ea85c776-a79b-4603-b307-d6760a400281', digi_id: 'boo', do_type: 'audio', phase: 'digitization', step: 'qc', status: 'pause', label:'why label anything?', notes: 'notes') }
       it { should be_a(Rsbe::Client::Se) }
-      its(:coll_id)     { should eq 'ea85c776-a79b-4603-b307-d6760a400281' }
+      its(:coll_id) { should eq 'ea85c776-a79b-4603-b307-d6760a400281' }
       its(:digi_id) { should eq 'boo' }
       its(:do_type) { should eq 'audio' }
-      its(:phase) { should eq 'digitization' }
-      its(:step) { should eq 'qc' }
-      its(:status) { should eq 'pause' }
-      its(:label) { should eq 'why label anything?' }
-      its(:notes) { should eq 'notes' }
+      its(:phase)   { should eq 'digitization' }
+      its(:step)    { should eq 'qc' }
+      its(:status)  { should eq 'pause' }
+      its(:label)   { should eq 'why label anything?' }
+      its(:notes)   { should eq 'notes' }
     end
     context "with incorrect argument type" do
       subject { Rsbe::Client::Se.new(24) }
@@ -57,33 +57,33 @@ describe Rsbe::Client::Collection do
           let(:coll_id) { "ea85c776-a79b-4603-b307-d6760a400281" }
           let(:digi_id) { 'posso_dormire' }
           let(:do_type) { 'map' }
-          let(:phase)  { 'upload' }
-          let(:step)  { 'packaging' }
+          let(:phase)   { 'upload' }
+          let(:step)    { 'packaging' }
           let(:status)  { 'done' }
-          let(:label)  { 'labels' }
-          let(:notes)  { 'lorem ipsum dolor' }
+          let(:label)   { 'labels' }
+          let(:notes)   { 'lorem ipsum dolor' }
           let(:se) { Rsbe::Client::Se.new(coll_id: coll_id,
-                                                          digi_id:  digi_id,
-                                                          do_type: do_type,
-                                                          phase:  phase,
-                                                          step: step,
-                                                          status: status,
-                                                          label: label,
-                                                          notes: notes) }
+                                          digi_id:  digi_id,
+                                          do_type: do_type,
+                                          phase:  phase,
+                                          step: step,
+                                          status: status,
+                                          label: label,
+                                          notes: notes) }
           subject { se }
           its(:save) { should eq true }
 
           context "after save" do
             before { se.save }
-            its(:id)         { should_not be_nil }
+            its(:id)      { should_not be_nil }
             its(:coll_id) { should eq 'ea85c776-a79b-4603-b307-d6760a400281' }
-            its(:digi_id)       { should eq digi_id    }
-            its(:do_type)      { should eq do_type   }
-            its(:phase)       { should eq phase    }
-            its(:step)       { should eq step    }
-            its(:status)       { should eq status    }
-            its(:label)       { should eq label    }
-            its(:notes)       { should eq notes    }
+            its(:digi_id) { should eq digi_id }
+            its(:do_type) { should eq do_type }
+            its(:phase)   { should eq phase   }
+            its(:step)    { should eq step    }
+            its(:status)  { should eq status  }
+            its(:label)   { should eq label   }
+            its(:notes)   { should eq notes   }
             its(:created_at) { should_not be_nil }
             its(:updated_at) { should_not be_nil }
           end
@@ -91,30 +91,30 @@ describe Rsbe::Client::Collection do
 
         context "and a known id", vcr: {cassette_name: 'se/save-create-known-id'} do
           let(:se) do
-            Rsbe::Client::Se.new(id:         'd72359c1-ecfd-4dbf-843c-bf1ec5f4f454',
-                                         coll_id: 'ea85c776-a79b-4603-b307-d6760a400281',
-                                         digi_id: 'AA-MX-0143',
-                                         do_type: 'map',
-                                         phase:  'upload',
-                                         step: 'upload',
-                                         status: 'done',
-                                         label: 'label',
-                                         notes: 'notes')
+            Rsbe::Client::Se.new(id: 'd72359c1-ecfd-4dbf-843c-bf1ec5f4f454',
+                                 coll_id: 'ea85c776-a79b-4603-b307-d6760a400281',
+                                 digi_id: 'AA-MX-0143',
+                                 do_type: 'map',
+                                 phase: 'upload',
+                                 step: 'upload',
+                                 status: 'done',
+                                 label: 'label',
+                                 notes: 'notes')
           end
           subject { se }
           its(:save) { should eq true }
 
           context "after save" do
             before { se.save }
-            its(:id)         { should eq 'd72359c1-ecfd-4dbf-843c-bf1ec5f4f454' }
+            its(:id)      { should eq 'd72359c1-ecfd-4dbf-843c-bf1ec5f4f454' }
             its(:coll_id) { should eq 'ea85c776-a79b-4603-b307-d6760a400281' }
-            its(:digi_id)       { should eq 'AA-MX-0143'    }
-            its(:do_type)      { should eq 'map'   }
-            its(:phase)       { should eq 'upload'    }
-            its(:step)       { should eq 'upload'    }
-            its(:status)       { should eq 'done'    }
-            its(:label)       { should eq 'label'    }
-            its(:notes)       { should eq 'notes'    }
+            its(:digi_id) { should eq 'AA-MX-0143' }
+            its(:do_type) { should eq 'map'      }
+            its(:phase)   { should eq 'upload'   }
+            its(:step)    { should eq 'upload'   }
+            its(:status)  { should eq 'done'     }
+            its(:label)   { should eq 'label'    }
+            its(:notes)   { should eq 'notes'    }
             its(:created_at) { should_not be_nil }
             its(:updated_at) { should_not be_nil }
           end
@@ -136,7 +136,7 @@ describe Rsbe::Client::Collection do
         subject { se }
         context "before save-as-update" do
           its(:id)         { should eq 'acf51ef2-8bf3-4f05-9042-0bfcb6860560' }
-          its(:phase)       { should eq 'digitization'  }
+          its(:phase)      { should eq 'digitization'  }
           its(:step)       { should eq 'qc' }
           its(:created_at) { should_not be_nil }
           its(:updated_at) { should_not be_nil }
@@ -149,7 +149,7 @@ describe Rsbe::Client::Collection do
           its(:save) { should eq true }
           context "after save" do
             its(:id)         { should eq 'acf51ef2-8bf3-4f05-9042-0bfcb6860560' }
-            its(:phase)       { should eq 'upload'  }
+            its(:phase)      { should eq 'upload'  }
             its(:step)       { should eq 'packaging' }
             its(:created_at) { should_not be_nil }
             its(:updated_at) { should_not be_nil }
