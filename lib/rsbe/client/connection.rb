@@ -15,6 +15,10 @@ module Rsbe
         end
         @conn.basic_auth(@user, @password)
       end
+
+      def same_origin?(url)
+        (url =~ /\A#{@url}/) ? true : false
+      end  
     end
   end
 end
