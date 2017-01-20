@@ -1,6 +1,6 @@
 module Rsbe
   module Client
-    class WrongOriginError < RuntimeError
+    class WrongOriginError < ArgumentError
     end
   end
 end
