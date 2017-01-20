@@ -1,0 +1,53 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/colls/ea85c776-a79b-4603-b307-d6760a400281
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - '*/*'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"b5aa3a331c5cd9b6a585a1f93c8f4649"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 38bbfb13-f0ae-4e6f-bd39-f7fa36e445f0
+      X-Runtime:
+      - '0.050442'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"ea85c776-a79b-4603-b307-d6760a400281","partner_id":"977e659b-886a-4626-8799-8979426ad2b3","code":"quux","name":"quasar
+        collection","coll_type":"origin","created_at":"2016-11-30T18:49:35.618Z","updated_at":"2016-11-30T18:49:35.618Z","quota":500,"ready_for_content":true,"partner_url":"http://localhost:3000/api/v0/partners/977e659b-886a-4626-8799-8979426ad2b3","ses_url":"http://localhost:3000/api/v0/colls/ea85c776-a79b-4603-b307-d6760a400281/ses","lock_version":0,"rel_path":"quux"}'
+    http_version: 
+  recorded_at: Fri, 20 Jan 2017 23:39:52 GMT
+recorded_with: VCR 2.9.3
