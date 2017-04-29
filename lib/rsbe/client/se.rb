@@ -7,10 +7,28 @@ module Rsbe
         emsg = 'Method not supported. Access via Rsbe::Client::Partner#collections'
         fail Rsbe::Client::MethodNotImplementedError, emsg
       end
-      
+
       def self.base_path
         super + '/ses'
       end
+
+      def self.search(params = {})
+        raise ArgumentError.new("Required params: #{search_required_keys}") if
+        params.empty?
+        required_params = search_required_keys
+        search_params = {params: params, required_params: required_params, scope: search_scope}
+        Search.search(search_params)
+      end
+
+      def self.search_required_keys
+        [:coll_id, :digi_id]
+      end
+
+      def self.search_scope
+        "ses"
+      end
+
+      private_class_method :search_required_keys, :search_scope
 
       # implementation objectives:
       # - expose attributes via standard setter/getter methods
