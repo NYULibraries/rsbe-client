@@ -39,10 +39,18 @@ module Search
   end
 
   def self.chk_search_args
+    string_keys?
     incoming_keys = @args.keys.sort
     compare_keys(incoming_keys,@required_keys)
   end
 
+  def self.string_keys?
+    string_keys = []
+    @args.keys.each { |k|
+      string_keys << k unless k.is_a?(Symbol)
+    }
+    raise ArgumentError.new("Param key: #{string_keys} should be of type Symbol") if string_keys.size > 0
+  end
   def self.compare_keys(incoming_keys,required_keys)
     compare_keys = incoming_keys - required_keys
     raise ArgumentError.new("Required params: #{required_keys}") unless
@@ -63,5 +71,5 @@ module Search
     [:params, :required_params, :scope].sort
   end
 
-  private_class_method :chk_search_args, :compare_keys, :hsh_valid_keys, :is_valid?, :query_search_url, :parameterize_params, :search_url_fragment, :query
+  private_class_method :chk_search_args, :compare_keys, :hsh_valid_keys, :is_valid?, :query_search_url, :parameterize_params, :search_url_fragment, :query, :string_keys?
 end
