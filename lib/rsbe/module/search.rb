@@ -5,8 +5,6 @@ module Search
     # check if search params are valid
     is_valid?
     @args = hsh[:params]
-    # normalize keys if sent in string form
-    normalize_keys
     @required_keys = hsh[:required_params]
     @scope = hsh[:scope]
     # check search args sent
@@ -39,14 +37,7 @@ module Search
     }
     arr.join("&")
   end
-  def self.normalize_keys
-    @args.keys.each do |key|
-      case key
-      when String
-        @args[(key.to_sym rescue key) || key] = @args.delete(key)
-      end
-    end
-  end
+
   def self.chk_search_args
     incoming_keys = @args.keys.sort
     compare_keys(incoming_keys,@required_keys)
@@ -59,13 +50,18 @@ module Search
   end
 
   def self.is_valid?
-    incoming_keys = @hsh.keys.sort
-    compare_keys(incoming_keys,hsh_valid_keys)
+    case @hsh.class.to_s
+    when "Hash"
+      incoming_keys = @hsh.keys.sort
+      compare_keys(incoming_keys,hsh_valid_keys)
+    else
+      raise ArgumentError.new("Expecting hash as a arguments with the following arguments: #{hsh_valid_keys}")
+    end
   end
 
   def self.hsh_valid_keys
     [:params, :required_params, :scope].sort
   end
 
-  private_class_method :chk_search_args, :compare_keys, :hsh_valid_keys, :is_valid?, :normalize_keys, :query_search_url, :parameterize_params, :search_url_fragment, :query
+  private_class_method :chk_search_args, :compare_keys, :hsh_valid_keys, :is_valid?, :query_search_url, :parameterize_params, :search_url_fragment, :query
 end

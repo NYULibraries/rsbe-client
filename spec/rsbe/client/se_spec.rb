@@ -1,4 +1,4 @@
-describe Rsbe::Client::Collection do
+describe Rsbe::Client::Se do
 
   describe ".new" do
     context "with valid attributes and symbol keys" do
@@ -33,6 +33,31 @@ describe Rsbe::Client::Collection do
     end
   end
 
+  describe ".search" do
+    describe "with valid params" do
+      it "with an existing se, should have a response status of 200", vcr: {cassette_name: 'se/search-with-existing-se'} do
+        valid_params = {coll_id: 'ea85c776-a79b-4603-b307-d6760a400281', digi_id: 'AD-MT-0123'}
+        response = Rsbe::Client::Se.search(valid_params)
+        status = response.status
+        expect(status).to eq(200)
+      end
+      it "with a non-existent se, should have a response status of 200", vcr: {cassette_name: 'se/search-with-missing-se'} do
+        no_se = {coll_id: 'ea85c776-a79b-4603-b307-d6760a400281', digi_id: 'iamnothere'}
+        response = Rsbe::Client::Se.search(no_se)
+        status = response.status
+        expect(status).to eq(200)
+      end
+    end
+    context "with invalid params" do
+      it "raises an error if no params are sent" do
+        expect { Rsbe::Client::Se.search }.to raise_error(ArgumentError)
+      end
+      it "raises an error if a param key is a string" do
+        invalid_params = {'coll_id' => 'ea85c776-a79b-4603-b307-d6760a400281', 'digi_id' => 'AD-MT-0123'}
+        expect { Rsbe::Client::Se.search(invalid_params) }.to raise_error(ArgumentError)
+      end
+    end
+  end
   describe ".find" do
     context "with id of existing Se", vcr: {cassette_name: 'se/find-existing'} do
       subject { Rsbe::Client::Se.find('acf51ef2-8bf3-4f05-9042-0bfcb6860560') }

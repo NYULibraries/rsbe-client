@@ -13,8 +13,13 @@ module Rsbe
       end
 
       def self.search(params = {})
+        string_keys = []
         raise ArgumentError.new("Required params: #{search_required_keys}") if
         params.empty?
+        params.keys.each { |k|
+          string_keys << k unless k.is_a?(Symbol)
+        }
+        raise ArgumentError.new("Param key: #{string_keys} should be of type Symbol") if string_keys.size > 0
         required_params = search_required_keys
         search_params = {params: params, required_params: required_params, scope: search_scope}
         Search.search(search_params)
