@@ -1,13 +1,12 @@
 describe Search do
   describe ".search" do
-    context "with valid params" do
+    context "with valid params", vcr: {cassette_name: 'search/search-with-existing-se'} do
       let(:valid_params) {    {:params=>{:coll_id=>"ea85c776-a79b-4603-b307-d6760a400281", :digi_id=>"AD-MT-0123"},
  :required_params=>[:coll_id, :digi_id],
  :scope=>"ses"}}
       let(:rsp) { Search.search(valid_params) }
-      let(:status) { rsp.status }
       it "should have a response status of 200" do
-        expect(status).to eq(200)
+        expect(rsp.status).to eq(200)
       end
     end
     context "with invalid params" do
