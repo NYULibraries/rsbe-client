@@ -35,18 +35,37 @@ describe Rsbe::Client::Se do
 
   describe ".search" do
     describe "with valid params" do
-      it "with an existing se, should have a response status of 200", vcr: {cassette_name: 'se/search-with-existing-se'} do
-        valid_params = {coll_id: 'ea85c776-a79b-4603-b307-d6760a400281', digi_id: 'AD-MT-0123'}
-        response = Rsbe::Client::Se.search(valid_params)
-        status = response.status
-        expect(status).to eq(200)
+      context "with an existing se", vcr: {cassette_name: 'se/search-with-existing-se'} do
+        let(:valid_params) { {coll_id: 'ea85c776-a79b-4603-b307-d6760a400281', digi_id: 'AD-MT-0123'} }
+        let(:response) { Rsbe::Client::Se.search(valid_params) }
+        let(:results)  { JSON.parse(response.body)['response'] }
+        it "should have a response status of 200" do
+          expect(response.status).to eq(200)
+        end
+        it "should have a numFound of 1" do
+          expect(results['numFound']).to eq(1)
+        end
+        it "docs array size should be 1" do
+          results = JSON.parse(response.body)['response']
+          expect(results['docs'].size).to eq(1)
+        end
       end
-      it "with a non-existent se, should have a response status of 200", vcr: {cassette_name: 'se/search-with-missing-se'} do
-        no_se = {coll_id: 'ea85c776-a79b-4603-b307-d6760a400281', digi_id: 'iamnothere'}
-        response = Rsbe::Client::Se.search(no_se)
-        status = response.status
-        expect(status).to eq(200)
+      context "with a non-existent se", vcr: {cassette_name: 'se/search-with-missing-se'} do
+        let(:no_se) { {coll_id: 'ea85c776-a79b-4603-b307-d6760a400281', digi_id: 'iamnothere'} }
+        let(:response) { Rsbe::Client::Se.search(no_se) }
+        let(:results)  { JSON.parse(response.body)['response'] }
+        it "should have a response status of 200" do
+          status = response.status
+          expect(status).to eq(200)
+        end
+        it "should have a numFound of 0" do
+          expect(results['numFound']).to eq(0)
+        end
+        it "docs array size should be 0" do
+          expect(results['docs'].size).to eq(0)
+        end
       end
+
     end
     context "with invalid params" do
       it "raises an error if no params are sent" do
