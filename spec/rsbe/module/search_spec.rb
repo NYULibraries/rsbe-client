@@ -5,9 +5,21 @@ describe Search do
  :required_params=>[:coll_id, :digi_id],
  :scope=>"ses"}}
       let(:rsp) { Search.search(valid_params) }
+      let(:header) { JSON.parse(rsp.body)['responseHeader'] }
+      let(:results) { JSON.parse(rsp.body)['response'] }
       it "should have a response status of 200" do
         expect(rsp.status).to eq(200)
       end
+      it "should have numFound of 1" do
+        expect(results['numFound']).to eq(1)
+      end
+      it "should have docs array of 1" do
+        expect(results['docs'].size).to eq(1)
+      end
+      it "should have a url of a certain value" do
+        expect(results['docs'][0]['url']).to eq("http://localhost:3000/api/v0/ses/07998216-af0a-4262-b7f9-6a7d9c4aeae4")
+      end
+
     end
     context "with invalid params" do
       it "raises an error if params are empty" do
