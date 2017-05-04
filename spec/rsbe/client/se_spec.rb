@@ -78,9 +78,6 @@ describe Rsbe::Client::Se do
         it "should have a response status of 400" do
           expect(response.status).to eq(400)
         end
-        it "should have a response status of 400" do
-          expect(response.status).to eq(400)
-        end
         it "should have a hash with a key called errors" do
           expect(message.key?("errors")).to be true
         end
