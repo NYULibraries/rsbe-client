@@ -1,5 +1,19 @@
-describe Rsbe::Client::Collection do
-
+describe Rsbe::Client::Se do
+  def chk_header(valid_params,incoming_response)
+    exist = []
+    allowed_param = {:scope => "ses"}
+    incoming_response.each_key { |k|
+      s = k.to_sym
+      if valid_params.key?(s) and valid_params[s] == incoming_response[k]
+        exist << true
+      elsif allowed_param.key?(s) and allowed_param[s] == incoming_response[k]
+        exist << true
+      else
+        exist << false
+      end
+    }
+    exist
+  end
   describe ".new" do
     context "with valid attributes and symbol keys" do
       subject { Rsbe::Client::Se.new(coll_id: 'ea85c776-a79b-4603-b307-d6760a400281', digi_id: 'boo', do_type: 'audio', phase: 'digitization', step: 'qc', status: 'pause', label:'why label anything?', notes: 'notes') }
@@ -33,6 +47,71 @@ describe Rsbe::Client::Collection do
     end
   end
 
+  describe ".search" do
+    describe "with valid params" do
+      context "with an existing se", vcr: {cassette_name: 'se/search-with-existing-se'} do
+        let(:valid_params) { {coll_id: 'ea85c776-a79b-4603-b307-d6760a400281', digi_id: 'AD-MT-0123'} }
+        let(:response) { Rsbe::Client::Se.search(valid_params) }
+        let(:header) { JSON.parse(response.body)['responseHeader'] }
+        let(:results)  { JSON.parse(response.body)['response'] }
+        it "should have a response status of 200" do
+          expect(response.status).to eq(200)
+        end
+        it "should have a numFound of 1" do
+          expect(results['numFound']).to eq(1)
+        end
+        it "docs array size should be 1" do
+          expect(results['docs'].size).to eq(1)
+        end
+        it "should have a url of a certain value" do
+          expect(results['docs'][0]['url']).to eq("http://localhost:3000/api/v0/ses/07998216-af0a-4262-b7f9-6a7d9c4aeae4")
+        end
+        it "should respond with a valid params in the responseHeader" do
+          valid_header_params = chk_header(valid_params,header["params"])
+          expect(valid_header_params).not_to include(false)
+        end
+      end
+      context "with valid params but malformed uuid", vcr: {cassette_name: 'se/search-malformed-uuid'} do
+        let(:bad_uuid) { {coll_id: 'ea85c0a400281', digi_id: 'AD-MT-0123'} }
+        let(:response) { Rsbe::Client::Se.search(bad_uuid) }
+        let(:message) { JSON.parse(response.body) }
+        it "should have a response status of 400" do
+          expect(response.status).to eq(400)
+        end
+        it "should have a hash with a key called errors" do
+          expect(message.key?("errors")).to be true
+        end
+        it "should have an error message" do
+          expect(message["errors"][0]).to eql("ERROR: coll_id value: ea85c0a400281 needs to be a valid UUID")
+        end
+      end
+      context "with a non-existent se", vcr: {cassette_name: 'se/search-with-missing-se'} do
+        let(:no_se) { {coll_id: 'ea85c776-a79b-4603-b307-d6760a400281', digi_id: 'iamnothere'} }
+        let(:response) { Rsbe::Client::Se.search(no_se) }
+        let(:results)  { JSON.parse(response.body)['response'] }
+        it "should have a response status of 200" do
+          status = response.status
+          expect(status).to eq(200)
+        end
+        it "should have a numFound of 0" do
+          expect(results['numFound']).to eq(0)
+        end
+        it "docs array size should be 0" do
+          expect(results['docs'].size).to eq(0)
+        end
+      end
+
+    end
+    context "with invalid params" do
+      it "raises an error if no params are sent" do
+        expect { Rsbe::Client::Se.search }.to raise_error(ArgumentError)
+      end
+      it "raises an error if a param key is a string" do
+        invalid_params = {'coll_id' => 'ea85c776-a79b-4603-b307-d6760a400281', 'digi_id' => 'AD-MT-0123'}
+        expect { Rsbe::Client::Se.search(invalid_params) }.to raise_error(ArgumentError)
+      end
+    end
+  end
   describe ".find" do
     context "with id of existing Se", vcr: {cassette_name: 'se/find-existing'} do
       subject { Rsbe::Client::Se.find('acf51ef2-8bf3-4f05-9042-0bfcb6860560') }
