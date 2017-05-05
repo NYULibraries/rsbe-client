@@ -1,3 +1,4 @@
+#CLIENT_CLASS = %w()
 %w(base
 partner
 collection
@@ -27,10 +28,10 @@ module Rsbe
 
     def self.find_and_instantiate(url)
       retval = nil
-      [ 
-        Rsbe::Client::Partner, 
+      [
+        Rsbe::Client::Partner,
         Rsbe::Client::Provider,
-        Rsbe::Client::Collection, 
+        Rsbe::Client::Collection,
         Rsbe::Client::Se
       ].each do |klass|
         # UUID Regexp from http://stackoverflow.com/a/14166194
