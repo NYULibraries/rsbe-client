@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://foo:bar@localhost:3000/api/v0/search?coll_id=ea85c776-a79b-4603-b307-d6760a400281&digi_id=AD-MT-0123&scope=ses
+    uri: http://foo:bar@localhost:3000/api/v0/search?coll_id=ea85c776-a79b-4603-b307-d6760a400281&digi_id=foo_quux_cuid370&scope=ses
     body:
       encoding: US-ASCII
       string: ''
@@ -31,22 +31,22 @@ http_interactions:
       X-Meta-Request-Version:
       - 0.2.9
       Etag:
-      - '"b302707e51e1018617ff019e7c9c66ba"'
+      - '"820092f65f371dd11aea30f413ae8cc2"'
       Cache-Control:
       - max-age=0, private, must-revalidate
       Set-Cookie:
       - request_method=GET; path=/
       X-Request-Id:
-      - 9b5e9b1d-dbae-4661-9e80-f39205f26602
+      - 249013de-7ec4-4a54-b0e6-72e363dc2038
       X-Runtime:
-      - '0.006800'
+      - '0.007839'
       Connection:
       - close
       Server:
       - thin 1.6.2 codename Doc Brown
     body:
       encoding: UTF-8
-      string: '{"responseHeader":{"params":{"coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"AD-MT-0123","scope":"ses"}},"response":{"numFound":1,"start":0,"docs":[{"url":"http://localhost:3000/api/v0/ses/07998216-af0a-4262-b7f9-6a7d9c4aeae4"}]}}'
+      string: '{"responseHeader":{"params":{"coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"foo_quux_cuid370","scope":"ses"}},"response":{"numFound":1,"start":0,"docs":[{"url":"http://localhost:3000/api/v0/ses/f903ee1f-83e3-4ba2-8234-0d0b85793705"}]}}'
     http_version: 
-  recorded_at: Mon, 01 May 2017 03:48:33 GMT
+  recorded_at: Tue, 04 Jul 2017 22:38:12 GMT
 recorded_with: VCR 2.9.3

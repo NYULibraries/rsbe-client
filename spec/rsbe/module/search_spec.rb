@@ -3,7 +3,7 @@ describe Search do
     def se_valid_params
       { :params =>
         { :coll_id => "ea85c776-a79b-4603-b307-d6760a400281",
-          :digi_id=>"AD-MT-0123"
+          :digi_id=>"foo_quux_cuid370"
         },
         :required_params => [:coll_id, :digi_id],
         :scope=>"ses"
@@ -41,7 +41,7 @@ describe Search do
           expect(results['docs'].size).to eq(1)
         end
         it "should have a url of a certain value" do
-          expect(results['docs'][0]['url']).to eq("http://localhost:3000/api/v0/ses/07998216-af0a-4262-b7f9-6a7d9c4aeae4")
+          expect(results['docs'][0]['url']).to eq("http://localhost:3000/api/v0/ses/f903ee1f-83e3-4ba2-8234-0d0b85793705")
         end
         it "should respond with a valid params in the responseHeader" do
           valid_header_params = chk_header(valid_params[:scope],header["params"])
