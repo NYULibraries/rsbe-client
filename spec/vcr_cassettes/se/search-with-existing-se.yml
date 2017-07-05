@@ -2,55 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://foo:bar@localhost:3000/api/v0/search?coll_id=ea85c776-a79b-4603-b307-d6760a400281&digi_id=AD-MT-0123&scope=ses
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 200
-      message: OK
-    headers:
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Ua-Compatible:
-      - chrome=1
-      Content-Type:
-      - application/json; charset=utf-8
-      X-Meta-Request-Version:
-      - 0.2.9
-      Etag:
-      - '"7f9c1fa88cb4f0f60be8622a1356156a"'
-      Cache-Control:
-      - max-age=0, private, must-revalidate
-      Set-Cookie:
-      - request_method=GET; path=/
-      X-Request-Id:
-      - b66d4e74-9e98-480c-af2c-4ffc195e8e2b
-      X-Runtime:
-      - '0.014937'
-      Connection:
-      - close
-      Server:
-      - thin 1.6.2 codename Doc Brown
-    body:
-      encoding: UTF-8
-      string: '{"responseHeader":{"params":{"coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"AD-MT-0123","scope":"ses"}},"response":{"numFound":0,"start":0,"docs":[]}}'
-    http_version: 
-  recorded_at: Wed, 05 Jul 2017 00:03:42 GMT
-- request:
-    method: get
     uri: http://foo:bar@localhost:3000/api/v0/search?coll_id=ea85c776-a79b-4603-b307-d6760a400281&digi_id=foo_quux_cuid370&scope=ses
     body:
       encoding: US-ASCII
@@ -86,9 +37,9 @@ http_interactions:
       Set-Cookie:
       - request_method=GET; path=/
       X-Request-Id:
-      - 56dadbbc-47bd-4e89-8cfd-dda2d0f3a479
+      - 4aca9a9d-68f2-45dc-9cbe-22612a54ac8c
       X-Runtime:
-      - '0.008348'
+      - '0.007031'
       Connection:
       - close
       Server:
@@ -97,5 +48,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"responseHeader":{"params":{"coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"foo_quux_cuid370","scope":"ses"}},"response":{"numFound":1,"start":0,"docs":[{"url":"http://localhost:3000/api/v0/ses/f903ee1f-83e3-4ba2-8234-0d0b85793705"}]}}'
     http_version: 
-  recorded_at: Wed, 05 Jul 2017 00:07:57 GMT
+  recorded_at: Wed, 05 Jul 2017 00:25:41 GMT
 recorded_with: VCR 2.9.3

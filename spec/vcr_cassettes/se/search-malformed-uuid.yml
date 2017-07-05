@@ -2,57 +2,6 @@
 http_interactions:
 - request:
     method: get
-    uri: http://foo:bar@localhost:3000/api/v0/search?coll_id=ea85c0a400281&digi_id=AD-MT-0123&scope=ses
-    body:
-      encoding: US-ASCII
-      string: ''
-    headers:
-      User-Agent:
-      - Faraday v0.9.2
-      Accept-Encoding:
-      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
-      Accept:
-      - "*/*"
-  response:
-    status:
-      code: 400
-      message: Bad Request
-    headers:
-      X-Frame-Options:
-      - SAMEORIGIN
-      X-Xss-Protection:
-      - 1; mode=block
-      X-Content-Type-Options:
-      - nosniff
-      X-Ua-Compatible:
-      - chrome=1
-      Content-Type:
-      - application/json; charset=utf-8
-      X-Meta-Request-Version:
-      - 0.2.9
-      Cache-Control:
-      - no-cache
-      Set-Cookie:
-      - request_method=GET; path=/
-      X-Request-Id:
-      - 124d144b-22c7-4589-9727-38d4c0c00093
-      X-Runtime:
-      - '0.007772'
-      Connection:
-      - close
-      Server:
-      - thin 1.6.2 codename Doc Brown
-    body:
-      encoding: UTF-8
-      string: '{"errors":["PG::InvalidTextRepresentation: ERROR:  invalid input syntax
-        for uuid: \"ea85c0a400281\"\nLINE 1: ...ELECT \"ses\".* FROM \"ses\"  WHERE
-        \"ses\".\"coll_id\" = ''ea85c0a40...\n                                                             ^\n:
-        SELECT \"ses\".* FROM \"ses\"  WHERE \"ses\".\"coll_id\" = ''ea85c0a400281''
-        AND \"ses\".\"digi_id\" = ''AD-MT-0123''"]}'
-    http_version: 
-  recorded_at: Wed, 05 Jul 2017 00:03:42 GMT
-- request:
-    method: get
     uri: http://foo:bar@localhost:3000/api/v0/search?coll_id=ea85c0a400281&digi_id=foo_quux_cuid370&scope=ses
     body:
       encoding: US-ASCII
@@ -86,9 +35,9 @@ http_interactions:
       Set-Cookie:
       - request_method=GET; path=/
       X-Request-Id:
-      - b7870608-e889-4bde-b6ab-8e5c126393aa
+      - 81a62b8a-dd5c-4ee5-87ec-00baa34d6056
       X-Runtime:
-      - '0.048387'
+      - '0.008165'
       Connection:
       - close
       Server:
@@ -101,5 +50,5 @@ http_interactions:
         SELECT \"ses\".* FROM \"ses\"  WHERE \"ses\".\"coll_id\" = ''ea85c0a400281''
         AND \"ses\".\"digi_id\" = ''foo_quux_cuid370''"]}'
     http_version: 
-  recorded_at: Wed, 05 Jul 2017 00:07:57 GMT
+  recorded_at: Wed, 05 Jul 2017 00:25:41 GMT
 recorded_with: VCR 2.9.3
