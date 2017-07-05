@@ -32,6 +32,20 @@ describe Rsbe::Client::SearchResults do
       end
     end
 
+    describe '#results' do
+      it 'should return the correct count' do
+        expect(sut.results.length).to eq(1)
+      end
+
+      it 'should return the correct object type' do
+        expect(sut.results.first.class).to eq(Rsbe::Client::Se)
+      end
+
+      it 'should return the correct object' do
+        expect(sut.results.first.id).to eq('f903ee1f-83e3-4ba2-8234-0d0b85793705')
+      end
+    end
+
     describe 'PRIVATE METHOD: #docs' do
       it 'should return the correct count' do
         expect(sut.send(:docs).size).to eq(1)
