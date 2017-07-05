@@ -31,5 +31,18 @@ describe Rsbe::Client::SearchResults do
         expect(sut.num_found).to eq(1)
       end
     end
+
+    describe 'PRIVATE METHOD: #docs' do
+      it 'should return the correct count' do
+        expect(sut.send(:docs).size).to eq(1)
+      end
+    end
+
+    describe 'PRIVATE METHOD: #urls' do
+      it 'should return the correct URL' do
+        expected = "http://localhost:3000/api/v0/ses/f903ee1f-83e3-4ba2-8234-0d0b85793705" 
+        expect(sut.send(:urls)[0]).to eq(expected)
+      end
+    end
   end
 end

@@ -15,6 +15,10 @@ module Rsbe
         response['numFound']
       end
 
+      def results
+        @results ||= urls.collect {|u| Rsbe::Client.find(u)}
+      end
+
       private
 
       def response
@@ -23,6 +27,14 @@ module Rsbe
 
       def json
         @json ||= JSON.parse(@api_response.body)
+      end
+
+      def docs
+        @docs ||= response['docs']
+      end
+
+      def urls
+        @urls ||= docs.collect {|d| d['url']}
       end
     end
   end
