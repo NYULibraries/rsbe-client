@@ -8,7 +8,8 @@ connection not_found_error
 method_not_implemented_error
 wrong_origin_error
 unrecognized_resource_error
-search).each do |r|
+search
+search_results).each do |r|
   require_relative "./client/#{r}"
 end
 
