@@ -51,10 +51,11 @@ module Search
     }
     raise ArgumentError.new("Param key: #{string_keys} should be of type Symbol") if string_keys.size > 0
   end
-  def self.compare_keys(incoming_keys,required_keys)
-    compare_keys = incoming_keys - required_keys
-    raise ArgumentError.new("Required params: #{required_keys}") unless
-    compare_keys.empty?
+  def self.compare_keys(incoming_keys, required_keys)
+    unless required_keys.empty?
+      compare_keys = incoming_keys - required_keys
+      raise ArgumentError.new("Required params: #{required_keys}") unless compare_keys.empty?
+    end
   end
 
   def self.is_valid?
