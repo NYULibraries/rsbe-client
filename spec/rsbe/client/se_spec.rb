@@ -50,7 +50,7 @@ describe Rsbe::Client::Se do
   describe ".search" do
     describe "with valid params" do
       context "with an existing se", vcr: {cassette_name: 'se/search-with-existing-se'} do
-        let(:valid_params) { {coll_id: 'ea85c776-a79b-4603-b307-d6760a400281', digi_id: 'AD-MT-0123'} }
+        let(:valid_params) { {coll_id: 'ea85c776-a79b-4603-b307-d6760a400281', digi_id: 'foo_quux_cuid370'} }
         let(:response) { Rsbe::Client::Se.search(valid_params) }
         let(:header) { JSON.parse(response.body)['responseHeader'] }
         let(:results)  { JSON.parse(response.body)['response'] }
@@ -64,7 +64,7 @@ describe Rsbe::Client::Se do
           expect(results['docs'].size).to eq(1)
         end
         it "should have a url of a certain value" do
-          expect(results['docs'][0]['url']).to eq("http://localhost:3000/api/v0/ses/07998216-af0a-4262-b7f9-6a7d9c4aeae4")
+          expect(results['docs'][0]['url']).to eq("http://localhost:3000/api/v0/ses/f903ee1f-83e3-4ba2-8234-0d0b85793705")
         end
         it "should respond with a valid params in the responseHeader" do
           valid_header_params = chk_header(valid_params,header["params"])
@@ -72,7 +72,7 @@ describe Rsbe::Client::Se do
         end
       end
       context "with valid params but malformed uuid", vcr: {cassette_name: 'se/search-malformed-uuid'} do
-        let(:bad_uuid) { {coll_id: 'ea85c0a400281', digi_id: 'AD-MT-0123'} }
+        let(:bad_uuid) { {coll_id: 'ea85c0a400281', digi_id: 'foo_quux_cuid370'} }
         let(:response) { Rsbe::Client::Se.search(bad_uuid) }
         let(:message) { JSON.parse(response.body) }
         it "should have a response status of 400" do
@@ -82,7 +82,7 @@ describe Rsbe::Client::Se do
           expect(message.key?("errors")).to be true
         end
         it "should have an error message" do
-          expect(message["errors"][0]).to eql("ERROR: coll_id value: ea85c0a400281 needs to be a valid UUID")
+          expect(message["errors"][0]).to match(/invalid input syntax for uuid:/)
         end
       end
       context "with a non-existent se", vcr: {cassette_name: 'se/search-with-missing-se'} do
@@ -107,7 +107,7 @@ describe Rsbe::Client::Se do
         expect { Rsbe::Client::Se.search }.to raise_error(ArgumentError)
       end
       it "raises an error if a param key is a string" do
-        invalid_params = {'coll_id' => 'ea85c776-a79b-4603-b307-d6760a400281', 'digi_id' => 'AD-MT-0123'}
+        invalid_params = {'coll_id' => 'ea85c776-a79b-4603-b307-d6760a400281', 'digi_id' => 'foo_quux_cuid370'}
         expect { Rsbe::Client::Se.search(invalid_params) }.to raise_error(ArgumentError)
       end
     end
