@@ -1,5 +1,3 @@
-require 'ostruct'
-
 describe Rsbe::Client::SearchResults do
   context "when searching by digi_id", vcr: {cassette_name: 'search_results/search-by-digi_id'} do
     let(:search_params) {  
