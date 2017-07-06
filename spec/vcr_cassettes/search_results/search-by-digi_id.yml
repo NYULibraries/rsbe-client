@@ -37,9 +37,9 @@ http_interactions:
       Set-Cookie:
       - request_method=GET; path=/
       X-Request-Id:
-      - 649996e1-a10d-4fc8-bc6e-69104cb39774
+      - 22d3648a-879b-48d2-8d30-c015242b2f41
       X-Runtime:
-      - '0.007202'
+      - '0.007239'
       Connection:
       - close
       Server:
@@ -48,7 +48,7 @@ http_interactions:
       encoding: UTF-8
       string: '{"responseHeader":{"params":{"digi_id":"foo_quux_cuid370","scope":"ses"}},"response":{"numFound":1,"start":0,"docs":[{"url":"http://localhost:3000/api/v0/ses/f903ee1f-83e3-4ba2-8234-0d0b85793705"}]}}'
     http_version: 
-  recorded_at: Thu, 06 Jul 2017 00:15:55 GMT
+  recorded_at: Thu, 06 Jul 2017 01:53:37 GMT
 - request:
     method: get
     uri: http://foo:bar@localhost:3000/api/v0/ses/f903ee1f-83e3-4ba2-8234-0d0b85793705
@@ -86,9 +86,9 @@ http_interactions:
       Set-Cookie:
       - request_method=GET; path=/
       X-Request-Id:
-      - 5af0a512-0557-4a3a-a7df-4f4d2474e74f
+      - 02a0b14b-ff36-42fb-8ee6-0db85ba72158
       X-Runtime:
-      - '0.006444'
+      - '0.009841'
       Connection:
       - close
       Server:
@@ -97,5 +97,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"id":"f903ee1f-83e3-4ba2-8234-0d0b85793705","coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"foo_quux_cuid370","do_type":"postcard","phase":"digitization","step":"digitization","status":"queued","notes":null,"label":null,"created_at":"2017-05-16T18:54:24.431Z","updated_at":"2017-05-16T18:54:24.431Z","coll_url":"http://localhost:3000/api/v0/colls/ea85c776-a79b-4603-b307-d6760a400281","lock_version":0}'
     http_version: 
-  recorded_at: Thu, 06 Jul 2017 00:15:55 GMT
+  recorded_at: Thu, 06 Jul 2017 01:53:37 GMT
 recorded_with: VCR 2.9.3

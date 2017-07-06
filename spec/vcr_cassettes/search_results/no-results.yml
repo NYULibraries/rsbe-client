@@ -37,9 +37,9 @@ http_interactions:
       Set-Cookie:
       - request_method=GET; path=/
       X-Request-Id:
-      - 88f07e85-1c84-4308-bc81-12714d6f160c
+      - 57f5f496-4d1b-4831-bdf7-4e1068f1a155
       X-Runtime:
-      - '0.011992'
+      - '0.300909'
       Connection:
       - close
       Server:
@@ -48,5 +48,5 @@ http_interactions:
       encoding: UTF-8
       string: '{"responseHeader":{"params":{"digi_id":"3d842f97-25d3-4118-85c4-b6b973a43524","scope":"ses"}},"response":{"numFound":0,"start":0,"docs":[]}}'
     http_version: 
-  recorded_at: Thu, 06 Jul 2017 00:29:29 GMT
+  recorded_at: Thu, 06 Jul 2017 01:53:37 GMT
 recorded_with: VCR 2.9.3
