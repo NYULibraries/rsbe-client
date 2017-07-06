@@ -1,9 +1,7 @@
 require 'ostruct'
 
 describe Rsbe::Client::SearchResults do
-
-#  context "with valid search parameters" , vcr: {cassette_name: 'search_results/valid-search-params'} do
-  context "when searching by digi_id" do
+  context "when searching by digi_id", vcr: {cassette_name: 'search_results/search-by-digi_id'} do
     let(:search_params) {  { 
         params: { 
           digi_id: 'foo_quux_cuid370'
@@ -65,7 +63,7 @@ describe Rsbe::Client::SearchResults do
     end
   end
 
-  context "when searching by step" do
+  context "when searching by step", vcr: {cassette_name: 'search_results/search-by-step'} do
     let(:search_params) {  { 
         params: { 
           step: 'qc'

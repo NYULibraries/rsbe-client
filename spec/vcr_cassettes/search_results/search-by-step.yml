@@ -1,0 +1,201 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/search?scope=ses&step=qc
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"a86e5804c9e320000f4053b9fe937459"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 3ba5d86d-8e95-4ace-b67c-83fe91680c00
+      X-Runtime:
+      - '0.008322'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"responseHeader":{"params":{"scope":"ses","step":"qc"}},"response":{"numFound":3,"start":0,"docs":[{"url":"http://localhost:3000/api/v0/ses/80354e46-1f07-47bf-9093-035000b85b7c"},{"url":"http://localhost:3000/api/v0/ses/6549aeb6-05e9-48a9-91dd-266afd4d53ed"},{"url":"http://localhost:3000/api/v0/ses/68472925-c271-4643-b90a-ee2da34e8c69"}]}}'
+    http_version: 
+  recorded_at: Thu, 06 Jul 2017 00:15:55 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/ses/80354e46-1f07-47bf-9093-035000b85b7c
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"cabc650b94ed80bb0a782d0fe6f81629"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 6faf204a-9600-44fd-b078-5633a47bd657
+      X-Runtime:
+      - '0.006889'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"80354e46-1f07-47bf-9093-035000b85b7c","coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"foo_quasar000123","do_type":"image_set","phase":"digitization","step":"qc","status":"active","notes":null,"label":null,"created_at":"2017-01-20T17:18:10.316Z","updated_at":"2017-01-20T17:18:10.316Z","coll_url":"http://localhost:3000/api/v0/colls/ea85c776-a79b-4603-b307-d6760a400281","lock_version":0}'
+    http_version: 
+  recorded_at: Thu, 06 Jul 2017 00:15:55 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/ses/6549aeb6-05e9-48a9-91dd-266afd4d53ed
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"cd2b7a78d917b76205a8899d42255f90"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - f200d2f9-3187-4542-b7db-4b44ff2fb23f
+      X-Runtime:
+      - '0.007343'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"6549aeb6-05e9-48a9-91dd-266afd4d53ed","coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"posso_dormire","do_type":"map","phase":"digitization","step":"qc","status":"error","notes":"lorem
+        ipsum dolor","label":"labels","created_at":"2017-02-10T19:44:27.413Z","updated_at":"2017-02-10T19:44:27.413Z","coll_url":"http://localhost:3000/api/v0/colls/ea85c776-a79b-4603-b307-d6760a400281","lock_version":0}'
+    http_version: 
+  recorded_at: Thu, 06 Jul 2017 00:15:55 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/ses/68472925-c271-4643-b90a-ee2da34e8c69
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"4fca20e5b734de2e10eeba99531a6632"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 62dd3e3f-7228-47c0-a309-ac835a390fd4
+      X-Runtime:
+      - '0.006026'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"68472925-c271-4643-b90a-ee2da34e8c69","coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"devo_dormire","do_type":"map","phase":"digitization","step":"qc","status":"active","notes":"lorem
+        ipsum dolor","label":null,"created_at":"2017-02-10T19:46:18.090Z","updated_at":"2017-02-10T19:46:18.090Z","coll_url":"http://localhost:3000/api/v0/colls/ea85c776-a79b-4603-b307-d6760a400281","lock_version":0}'
+    http_version: 
+  recorded_at: Thu, 06 Jul 2017 00:15:55 GMT
+recorded_with: VCR 2.9.3
