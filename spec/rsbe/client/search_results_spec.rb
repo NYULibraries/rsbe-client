@@ -2,7 +2,8 @@ require 'ostruct'
 
 describe Rsbe::Client::SearchResults do
   context "when searching by digi_id", vcr: {cassette_name: 'search_results/search-by-digi_id'} do
-    let(:search_params) {  { 
+    let(:search_params) {  
+      { 
         params: { 
           digi_id: 'foo_quux_cuid370'
         },
@@ -26,13 +27,13 @@ describe Rsbe::Client::SearchResults do
     end
 
     describe '#num_found' do
-      it 'should return the correct count' do
+      it 'should return the correct number found' do
         expect(sut.num_found).to eq(1)
       end
     end
 
     describe '#results' do
-      it 'should return the correct count' do
+      it 'should return the correct number of results' do
         expect(sut.results.length).to eq(1)
       end
 
@@ -64,7 +65,8 @@ describe Rsbe::Client::SearchResults do
   end
 
   context "when searching by step", vcr: {cassette_name: 'search_results/search-by-step'} do
-    let(:search_params) {  { 
+    let(:search_params) {  
+      { 
         params: { 
           step: 'qc'
         },
@@ -76,8 +78,12 @@ describe Rsbe::Client::SearchResults do
     let(:response) { Rsbe::Client::Search.search(search_params) }
     let(:sut) { Rsbe::Client::SearchResults.new(response) }
 
+    it 'should return the number found' do
+      expect(sut.num_found).to eq(3)
+    end
+
     describe '#results' do
-      it 'should return the correct count' do
+      it 'should return the correct number of results' do
         expect(sut.results.length).to eq(3)
       end
 
@@ -97,6 +103,39 @@ describe Rsbe::Client::SearchResults do
         expect(sut.results[0].step).to eq('qc')
         expect(sut.results[1].step).to eq('qc')
         expect(sut.results[2].step).to eq('qc')
+      end
+    end
+  end
+
+  context "when searching for a non-existent item", vcr: {cassette_name: 'search_results/no-results'} do
+    let(:search_params) {  
+      { 
+        params: { 
+          digi_id: '3d842f97-25d3-4118-85c4-b6b973a43524'
+        },
+        required_params: [],
+        scope: "ses"
+      }
+    }
+
+    let(:response) { Rsbe::Client::Search.search(search_params) }
+    let(:sut) { Rsbe::Client::SearchResults.new(response) }
+
+    it 'should return the correct number found' do
+      expect(sut.num_found).to eq(0)
+    end
+
+    describe '#results' do
+      it 'should be successful' do
+        expect(sut.success?).to eq(true)
+      end
+
+      it 'should return the number of results' do
+        expect(sut.results.length).to eq(0)
+      end
+
+      it 'should return the correct object type' do
+        expect(sut.results.class).to eq(Array)
       end
     end
   end
