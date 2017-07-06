@@ -3,8 +3,7 @@ require 'ostruct'
 describe Rsbe::Client::SearchResults do
   let(:valid_params) {  { 
       params: { 
-        coll_id: "ea85c776-a79b-4603-b307-d6760a400281",
-        digi_id: "foo_quux_cuid370"
+        digi_id: 'foo_quux_cuid370'
       },
       required_params: [],
       scope: "ses"
@@ -19,7 +18,8 @@ describe Rsbe::Client::SearchResults do
     end
   end
 
-  context "with valid search parameters" do
+#  context "with valid search parameters" , vcr: {cassette_name: 'search_results/valid-search-params'} do
+  context "when searching by digi_id" do
     describe '#success?' do
       it 'should return true' do
         expect(sut.success?).to eq(true)
@@ -41,8 +41,12 @@ describe Rsbe::Client::SearchResults do
         expect(sut.results.first.class).to eq(Rsbe::Client::Se)
       end
 
-      it 'should return the correct object' do
+      it 'should return the object with the expected id' do
         expect(sut.results.first.id).to eq('f903ee1f-83e3-4ba2-8234-0d0b85793705')
+      end
+
+      it 'should return the object with the expected digi_id' do
+        expect(sut.results.first.digi_id).to eq('foo_quux_cuid370')
       end
     end
 
