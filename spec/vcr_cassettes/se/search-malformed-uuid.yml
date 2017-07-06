@@ -2,7 +2,7 @@
 http_interactions:
 - request:
     method: get
-    uri: http://foo:bar@localhost:3000/api/v0/search?coll_id=ea85c0a400281&digi_id=AD-MT-0123&scope=ses
+    uri: http://foo:bar@localhost:3000/api/v0/search?coll_id=ea85c0a400281&digi_id=foo_quux_cuid370&scope=ses
     body:
       encoding: US-ASCII
       string: ''
@@ -35,17 +35,20 @@ http_interactions:
       Set-Cookie:
       - request_method=GET; path=/
       X-Request-Id:
-      - 281fc826-ab14-40bd-8e3b-55425557ef87
+      - 81a62b8a-dd5c-4ee5-87ec-00baa34d6056
       X-Runtime:
-      - '0.007112'
+      - '0.008165'
       Connection:
       - close
       Server:
       - thin 1.6.2 codename Doc Brown
     body:
       encoding: UTF-8
-      string: '{"errors":["ERROR: coll_id value: ea85c0a400281 needs to be a valid
-        UUID"]}'
+      string: '{"errors":["PG::InvalidTextRepresentation: ERROR:  invalid input syntax
+        for uuid: \"ea85c0a400281\"\nLINE 1: ...ELECT \"ses\".* FROM \"ses\"  WHERE
+        \"ses\".\"coll_id\" = ''ea85c0a40...\n                                                             ^\n:
+        SELECT \"ses\".* FROM \"ses\"  WHERE \"ses\".\"coll_id\" = ''ea85c0a400281''
+        AND \"ses\".\"digi_id\" = ''foo_quux_cuid370''"]}'
     http_version: 
-  recorded_at: Thu, 04 May 2017 17:03:51 GMT
+  recorded_at: Wed, 05 Jul 2017 00:25:41 GMT
 recorded_with: VCR 2.9.3

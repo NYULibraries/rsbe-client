@@ -22,7 +22,7 @@ module Rsbe
       end
 
       def self.search_required_keys
-        [:coll_id, :digi_id]
+        []
       end
 
       def self.search_scope

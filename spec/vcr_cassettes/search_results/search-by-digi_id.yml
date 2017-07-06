@@ -1,0 +1,101 @@
+---
+http_interactions:
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/search?digi_id=foo_quux_cuid370&scope=ses
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"304f209fe22efe1e91a29453a78fed33"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 22d3648a-879b-48d2-8d30-c015242b2f41
+      X-Runtime:
+      - '0.007239'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"responseHeader":{"params":{"digi_id":"foo_quux_cuid370","scope":"ses"}},"response":{"numFound":1,"start":0,"docs":[{"url":"http://localhost:3000/api/v0/ses/f903ee1f-83e3-4ba2-8234-0d0b85793705"}]}}'
+    http_version: 
+  recorded_at: Thu, 06 Jul 2017 01:53:37 GMT
+- request:
+    method: get
+    uri: http://foo:bar@localhost:3000/api/v0/ses/f903ee1f-83e3-4ba2-8234-0d0b85793705
+    body:
+      encoding: US-ASCII
+      string: ''
+    headers:
+      User-Agent:
+      - Faraday v0.9.2
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      X-Frame-Options:
+      - SAMEORIGIN
+      X-Xss-Protection:
+      - 1; mode=block
+      X-Content-Type-Options:
+      - nosniff
+      X-Ua-Compatible:
+      - chrome=1
+      Content-Type:
+      - application/json; charset=utf-8
+      X-Meta-Request-Version:
+      - 0.2.9
+      Etag:
+      - '"9034ddca3e4876750ec146dfb508a27d"'
+      Cache-Control:
+      - max-age=0, private, must-revalidate
+      Set-Cookie:
+      - request_method=GET; path=/
+      X-Request-Id:
+      - 02a0b14b-ff36-42fb-8ee6-0db85ba72158
+      X-Runtime:
+      - '0.009841'
+      Connection:
+      - close
+      Server:
+      - thin 1.6.2 codename Doc Brown
+    body:
+      encoding: UTF-8
+      string: '{"id":"f903ee1f-83e3-4ba2-8234-0d0b85793705","coll_id":"ea85c776-a79b-4603-b307-d6760a400281","digi_id":"foo_quux_cuid370","do_type":"postcard","phase":"digitization","step":"digitization","status":"queued","notes":null,"label":null,"created_at":"2017-05-16T18:54:24.431Z","updated_at":"2017-05-16T18:54:24.431Z","coll_url":"http://localhost:3000/api/v0/colls/ea85c776-a79b-4603-b307-d6760a400281","lock_version":0}'
+    http_version: 
+  recorded_at: Thu, 06 Jul 2017 01:53:37 GMT
+recorded_with: VCR 2.9.3

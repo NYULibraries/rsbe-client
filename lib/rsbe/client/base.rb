@@ -1,10 +1,8 @@
 require 'faraday'
 require 'json'
-require_relative '../module/search'
 module Rsbe
   module Client
     class Base
-
       def self.find(id)
         o = find_and_instantiate(id)
         raise Rsbe::Client::RecordNotFound.new("#{self.name} with #{id} not found") if o.nil?
