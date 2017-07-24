@@ -10,13 +10,6 @@ Client library for interaction with the rsbe API
 
 This library allows one to interact with the R* Backend (rsbe) API.
 
-#### Completed User stories:
-* As an Authorized Client, I want to create a new Partner and have it persist.
-* As an Authorized Client, I want to update a Partner.
-* As an Authorized Client, I want to find a Partner by id.
-* As an Authorized Client, I want to get a list of all available Partners.
-
-
 #### Required Environment Variables:
 ```
 RSBE_URL
@@ -43,31 +36,28 @@ irb> Partner.all.each {|p| puts p.id}
 51213be7-c8de-4e06-8cc2-06bfc82cdd68
 977e659b-886a-4626-8799-8979426ad2b3
 ...
-```
-
-#### Usage (code example)
-```
-...
-def select_item_or_exit(items, label)
-  # do some stuff
-end
 ...
 
-partners = Rsbe::Client::Partner.all
-partners.sort! { |a, b| a.code <=> b.code }
-partner = select_item_or_exit(partners, 'partner')
+irb> p = Rsbe::Client::Partner.all.first
+ => #<Rsbe::Client::Partner:0x007fdc81b4ec08 ...>
 
-collections = partner.collections.sort { |a, b| a.code <=> b.code }
-collection = select_item_or_exit(collections, 'collection')
-puts "collection: #{collection.code}, #{collection.name} #{collection.id}"
-...
+irb> puts "#{p.id} : #{p.code} : #{p.name}"
+51213be7-c8de-4e06-8cc2-06bfc82cdd68 : bar :
+ => nil 
+
+irb> p.name = 'Foo Bar'
+ => "Foo Bar"
+
+irb> p.save
+ => true 
+
+> p = Rsbe::Client::Partner.find('51213be7-c8de-4e06-8cc2-06bfc82cdd68')
+ => #<Rsbe::Client::Partner:0x007fdc81a3cdd8 ...>
+
+irb>   puts "#{p.id} : #{p.code} : #{p.name}"
+51213be7-c8de-4e06-8cc2-06bfc82cdd68 : bar : Foo Bar
+ => nil 
+
 ```
 
-#### Methods:
-```
-Rsbe::Partner#save
-Rsbe::Partner#code
-Rsbe::Partner#name
-Rsbe::Partner#collections
-```
 
