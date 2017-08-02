@@ -6,7 +6,7 @@ The `Rsbe::Client::SearchResults` class takes the results of an
 `Rsbe::Client::Search` call, parses the results, and returns an  
 array of `Rsbe::Client::Se` objects.  
 
-You can run use `Se` attribute values as search filters.
+You can use `Se` attribute values as search filters.
 
 
 ##### Example: search by `digi_id`  
