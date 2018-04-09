@@ -39,7 +39,7 @@ module Rsbe
       #   data back and forth to back end app
 
       def self.rw_attrs
-        [:id, :coll_id, :digi_id, :do_type, :phase, :step, :status, :label, :notes]
+        [:id, :coll_id, :digi_id, :do_type, :phase, :step, :status, :label, :title, :notes]
       end
 
       def self.ro_attrs
