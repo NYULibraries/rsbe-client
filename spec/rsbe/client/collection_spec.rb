@@ -59,11 +59,13 @@ describe Rsbe::Client::Collection do
           let(:quota) { 1024 }
           let(:name)  { 'Lasers Under Kinetic Ether' }
           let(:coll_type) { 'origin' }
+          let(:ready_for_content) { true }
           let(:collection) { Rsbe::Client::Collection.new(partner_id: partner_id,
                                                           code:  code,
                                                           quota: quota,
                                                           name:  name,
-                                                          coll_type: coll_type) }
+                                                          coll_type: coll_type,
+                                                          ready_for_content: ready_for_content) }
           subject { collection }
           its(:save) { should eq true }
 
@@ -74,6 +76,8 @@ describe Rsbe::Client::Collection do
             its(:code)       { should eq code    }
             its(:quota)      { should eq quota   }
             its(:name)       { should eq name    }
+            its(:coll_type)  { should eq coll_type }
+            its(:ready_for_content) { should eq ready_for_content }
             its(:created_at) { should_not be_nil }
             its(:updated_at) { should_not be_nil }
           end

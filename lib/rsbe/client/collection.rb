@@ -14,7 +14,7 @@ module Rsbe
       end
 
       def self.rw_attrs
-        [:id, :code, :partner_id, :coll_type, :quota, :name, :rel_path]
+        [:id, :code, :partner_id, :coll_type, :quota, :name, :rel_path, :ready_for_content]
       end
 
       def self.ro_attrs
